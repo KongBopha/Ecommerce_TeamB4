@@ -1,13 +1,14 @@
 <script setup>
 import Navbar from "./components/Navbar.vue";
 import { RouterView } from "vue-router";
-import HomeView from "./views/HomeView.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
 <template>
   <div>
     <Navbar />
     <RouterView />
+    <Footer />
   </div>
   <HomeView />
 </template>
@@ -15,5 +16,8 @@ import HomeView from "./views/HomeView.vue";
 <style scoped>
 body {
   background-color: white;
+}
+footer {
+  margin-top: auto;
 }
 </style>

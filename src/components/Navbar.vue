@@ -21,7 +21,7 @@
     </header>
   </template>
   <script setup>
-  import Aboutus from '../../views/Aboutus.vue';
+import Aboutus from '../Views/Aboutus.vue';
 import shoes from '../assets/images/logo.png';  
   import { ref } from "vue";
   let input = ref("");
