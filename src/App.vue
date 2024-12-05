@@ -5,17 +5,24 @@ import Footer from "./components/Footer.vue";
 </script>
 
 <template>
-  <div>
+  <div class="layout">
     <Navbar />
     <RouterView />
     <Footer />
   </div>
-  <HomeView />
 </template>
 
 <style scoped>
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 body {
   background-color: white;
+}
+RouterView{
+  flex: 1;
 }
 footer {
   margin-top: auto;
