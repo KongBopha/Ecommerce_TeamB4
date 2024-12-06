@@ -29,6 +29,7 @@
   
   <script>
   export default {
+  name: "Promobox",
     data() {
       return {
         showPopup: false,

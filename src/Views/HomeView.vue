@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container bg-red-500">
     <main>
       <h1>
         Welcome to SparkFoot—where every step sparks something extraordinary. 
@@ -10,6 +10,7 @@
     <input type="text" v-model="searchQuery" placeholder="Search here..." class="searchBar"/>
     <font-awesome-icon class="icon-white" :icon="['fas', 'magnifying-glass']"/>
   </div>
+<Promobox/>
   <div class="relative flex space-x-[70px]">
     <CategoryComponent />
     <div>
@@ -68,9 +69,10 @@
 import ButtonComponent from '@/components/ButtonComponent.vue';
 import CardComponent from '@/components/CardComponent.vue';
 import CategoryComponent from '@/components/CategoryComponent.vue';
+import Promobox from "../components/Promobox.vue"
 
 export default {
-  components: {CategoryComponent, CardComponent, ButtonComponent},
+  components: {CategoryComponent, CardComponent, ButtonComponent, Promobox},
   setup() {
     return {
       searchQuery: "",  
@@ -81,21 +83,20 @@ export default {
 
 <style scoped>
 main {
-  width: 650px;
+  width: 100%;
   height: auto;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   font-size:  x-small;
   padding: 20px;   
   text-align: start;  
+  background-color: black;
 
 }
  
 .container {
   height: auto;  
-  width: auto;
-  padding-right: 800px;
-  padding-bottom: 620px;
+  width: 100%;
 }
 .searchBar {
   width: 100%;
@@ -128,6 +129,5 @@ input::placeholder {
   border-radius: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  
 }
 </style>
