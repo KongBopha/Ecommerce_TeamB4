@@ -1,16 +1,21 @@
 <template>
-  <div class="container bg-red-500">
+  <div class="container">
     <main>
       <h1>
-        Welcome to SparkFoot—where every step sparks something extraordinary. 
-        Discover a world of footwear designed to elevate your style, ignite your confidence, 
-        and keep you moving with energy.
+        Welcome to SparkFoot—where every step sparks something extraordinary.
+        Discover a world of footwear designed to elevate your style, ignite your
+        confidence, and keep you moving with energy.
       </h1>
     </main>
-    <input type="text" v-model="searchQuery" placeholder="Search here..." class="searchBar"/>
-    <font-awesome-icon class="icon-white" :icon="['fas', 'magnifying-glass']"/>
+    <input
+      type="text"
+      v-model="searchQuery"
+      placeholder="Search here..."
+      class="searchBar"
+    />
+    <font-awesome-icon class="icon-white" :icon="['fas', 'magnifying-glass']" />
   </div>
-<Promobox/>
+  <Promobox />
   <div class="relative flex space-x-[70px]">
     <CategoryComponent />
     <div>
@@ -66,16 +71,16 @@
 </template>
 
 <script>
-import ButtonComponent from '@/components/ButtonComponent.vue';
-import CardComponent from '@/components/CardComponent.vue';
-import CategoryComponent from '@/components/CategoryComponent.vue';
-import Promobox from "../components/Promobox.vue"
+import ButtonComponent from "@/components/ButtonComponent.vue";
+import CardComponent from "@/components/CardComponent.vue";
+import CategoryComponent from "@/components/CategoryComponent.vue";
+import Promobox from "../components/Promobox.vue";
 
 export default {
-  components: {CategoryComponent, CardComponent, ButtonComponent, Promobox},
+  components: { CategoryComponent, CardComponent, ButtonComponent, Promobox },
   setup() {
     return {
-      searchQuery: "",  
+      searchQuery: "",
     };
   },
 };
@@ -87,15 +92,14 @@ main {
   height: auto;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-  font-size:  x-small;
-  padding: 20px;   
-  text-align: start;  
-  background-color: black;
-
+  font-size: x-small;
+  padding: 20px;
+  text-align: start;
+  /* background-color: black; */
 }
- 
+
 .container {
-  height: auto;  
+  height: auto;
   width: 100%;
 }
 .searchBar {
@@ -105,24 +109,23 @@ main {
   border: 2px solid #222222;
   border-radius: 20px;
   text-indent: 50px;
-
 }
-.icon-white{
-    position: absolute;
-    color:rgb(0, 0, 0);
-    margin-left: 20px;
-    margin-top: -30px;  
-  }
-input::placeholder { 
-  font-style: italic;  
-  opacity: 0.8;  
+.icon-white {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  margin-left: 20px;
+  margin-top: -30px;
+}
+input::placeholder {
+  font-style: italic;
+  opacity: 0.8;
   text-indent: 50px;
 }
-  input {
+input {
   position: relative;
   display: block;
   width: 330px;
-  padding: 10px  ;
+  padding: 10px;
   background-color: rgb(255, 255, 255);
   font-size: 12px;
   border: none;
