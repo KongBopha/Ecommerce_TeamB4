@@ -12,7 +12,7 @@ import Promobox from "./components/Promobox.vue";
       <!-- <Promobox /> -->
     </div>
     <RouterView />
-    <Footer />
+    <Footer/>
   </div>
 </template>
 

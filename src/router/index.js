@@ -1,5 +1,8 @@
+import Aboutus from '@/Views/Aboutus.vue';
+import Contactus from '@/Views/Contactus.vue';
+import HomeView from '@/Views/HomeView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../../views/HomeView.vue';
+
 
 const routes = [
   {
@@ -12,21 +15,21 @@ const routes = [
     name:'aboutus',
     component:Aboutus
   },
-  {
-    path: '/SignUp',
-    name:'SignUp',
-    component:SignUp
-  },
+  // {
+  //   path: '/SignUp',
+  //   name:'SignUp',
+  //   component:sing
+  // },
   {
     path:'/contact',
     name:'contactus',
     component: Contactus
   },
-  {
-    path:'/Signin',
-    name:'signin',
-    component:Signin
-  }
+  // {
+  //   path:'/Signin',
+  //   name:'signin',
+  //   component:Signin
+  // }
 ];
 
 const router = createRouter({
