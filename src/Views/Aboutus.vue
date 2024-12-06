@@ -1,16 +1,19 @@
 <template>
     <div>
-        <h1> Welcome to Our page</h1>
+        <h1>Welocome to SparkFoot</h1>
     </div>
-<router-view/>
 </template>
+
 <script>
-    export default {
+export default {
+    setup () {
         
+
+        return {}
     }
-</script>
-<style scoped>
-h1{
-    color: black;
 }
+</script>
+
+<style lang="scss" scoped>
+
 </style>

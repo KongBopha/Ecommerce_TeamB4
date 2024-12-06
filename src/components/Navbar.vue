@@ -6,7 +6,7 @@
       </div>
       <nav>
         <router-link to="/">Home</router-link>
-        <router-link :to="{ name: 'Aboutus' }">About us</router-link>
+        <router-link :to="{ name: 'aboutus' }">About us</router-link>
         <router-link to="/categories">Categories</router-link>
         <router-link :to="{ name: 'contactus' }">Contact us</router-link>
         <div class="form-search">
@@ -15,23 +15,15 @@
         </div>
         <div class="icons">
           <font-awesome-icon :icon="['fas', 'cart-shopping']"/>
-          <font-awesome-icon :icon="['fas', 'user']" />
+          <font-awesome-icon :icon="['fas', 'user']" @click="userAuthen"/>
         </div>
       </nav>
     </header>
   </template>
   <script setup>
-import Aboutus from '../Views/Aboutus.vue';
 import shoes from '../assets/images/logo.png';  
   import { ref } from "vue";
-  let input = ref("");
 
-  const fruits = ["apple", "banana", "orange"];
-  function filteredList() {
-  return fruits.filter((fruit) =>
-    fruit.toLowerCase().includes(input.value.toLowerCase())
-  );
-}   
 </script>
 
   
