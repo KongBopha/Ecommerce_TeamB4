@@ -1,4 +1,5 @@
 import Aboutus from '@/Views/Aboutus.vue';
+import AuthenView from '@/Views/AuthenView.vue';
 import Contactus from '@/Views/Contactus.vue';
 import HomeView from '@/Views/HomeView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
@@ -15,21 +16,16 @@ const routes = [
     name:'aboutus',
     component:Aboutus
   },
-  // {
-  //   path: '/SignUp',
-  //   name:'SignUp',
-  //   component:sing
-  // },
+  {
+    path: '/Signin',
+    name:'SignUp',
+    component:AuthenView
+  },
   {
     path:'/contact',
     name:'contactus',
     component: Contactus
   },
-  // {
-  //   path:'/Signin',
-  //   name:'signin',
-  //   component:Signin
-  // }
 ];
 
 const router = createRouter({
