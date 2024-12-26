@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps } from "vue";
 
+
 defineProps({
   discount: String,
   image: String,

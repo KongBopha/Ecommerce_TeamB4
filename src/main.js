@@ -1,12 +1,11 @@
-import './assets/main.css';
-
 import 'primeicons/primeicons.css'
 import { createApp } from 'vue'
-//import { createPinia } from 'pinia'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router';
 
 import '@fortawesome/fontawesome-free/css/all.css';
+import './assets/main.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -28,9 +27,9 @@ library.add(faTiktok);
 
  
 const app = createApp(App);
-
+const pinia = createPinia();
 app.component('font-awesome-icon', FontAwesomeIcon);
 
 app.use(router);
-
+app.use(pinia);
 app.mount('#app');

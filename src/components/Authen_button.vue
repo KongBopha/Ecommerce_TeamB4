@@ -1,19 +1,24 @@
 <template>
     <div class="main-btn">
-        <p> Don't have any accounts? <span> Sign up</span></p>
+        <p> Don't have any accounts? <span @click="singupButton"> Sign up</span></p>
         <div class="btn-at">
             <h3>Log in</h3>
-    </div>
+        </div>
     </div>
 </template>
 
-<script>
-    export default {
-    }
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();  
+
+const singupButton = () => {
+    router.push('/signupview');  
+}
 </script>
 
 <style scoped>
-.main-btn{
+.main-btn {
     width: auto;
     height: auto;
     display: flex;
@@ -21,25 +26,29 @@
     justify-content: center;
     align-items: center;
 }
-.btn-at{
+
+.btn-at {
     width: 17rem;
     height: 3rem;
     background-color: rgb(27, 106, 255);
     border-radius: 20px;
-    margin-top: 60px;
+    margin-top: 15px;
 }
-h3{
-    color:white;
+
+h3 {
+    color: white;
     text-align: center;
-    padding-top: 8px;
 }
-p{
+
+p {
     color: black;
     margin-top: 20px;
 }
-span{
+
+span {
     color: blue;
     font-weight: bold;
     text-decoration: underline;
+    cursor: pointer; /* Adds a pointer cursor for better UX */
 }
 </style>

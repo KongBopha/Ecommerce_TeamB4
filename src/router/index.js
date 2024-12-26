@@ -2,6 +2,9 @@ import Aboutus from '@/Views/Aboutus.vue';
 import AuthenView from '@/Views/AuthenView.vue';
 import Contactus from '@/Views/Contactus.vue';
 import HomeView from '@/Views/HomeView.vue';
+import Signinview from '@/Views/signinview.vue';
+import Signupview from '@/Views/signupview.vue';
+
 import { createRouter, createWebHistory } from 'vue-router';
 
 
@@ -17,7 +20,7 @@ const routes = [
     component:Aboutus
   },
   {
-    path: '/Signin',
+    path: '/Signin',  
     name:'SignUp',
     component:AuthenView
   },
@@ -25,6 +28,16 @@ const routes = [
     path:'/contact',
     name:'contactus',
     component: Contactus
+  },
+  {
+    path: '/signinview',
+    name:'signinview',
+    component:Signinview
+  },
+  {
+    path: '/signupview',
+    name:'signupview',
+    component:Signupview
   },
 ];
 
