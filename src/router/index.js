@@ -2,6 +2,8 @@ import Aboutus from '@/Views/Aboutus.vue';
 import AuthenView from '@/Views/AuthenView.vue';
 import Contactus from '@/Views/Contactus.vue';
 import HomeView from '@/Views/HomeView.vue';
+import ProductViewNAF1 from '@/Views/ProductViewNAF1.vue';
+import ProductViewNAJ4 from '@/Views/ProductViewNAJ4.vue';
 import Signinview from '@/Views/signinview.vue';
 import Signupview from '@/Views/signupview.vue';
 
@@ -39,6 +41,18 @@ const routes = [
     name:'signupview',
     component:Signupview
   },
+  {
+    path: '/AirForce1',
+    name: 'Air-Force-1',
+    component: ProductViewNAF1,
+    props: true,
+  },
+  {
+    path: '/AirJordan4',
+    name: 'Air-Jordan-4',
+    component: ProductViewNAJ4 ,
+    prop: true,
+  }
 ];
 
 const router = createRouter({

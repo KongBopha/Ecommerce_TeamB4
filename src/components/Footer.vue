@@ -84,7 +84,7 @@
   }
   
   .footer-column ul li {
-    margin: 8px 0;
+    margin: 5px 0;
   }
   
   .footer-column ul li a {
@@ -98,11 +98,10 @@
   
   .footer-bottom {
     text-align: center;
-    margin-top: 20px;
   }
   
   .footer-bottom p {
-    margin: 5px 0;
+    margin: 0px 0;
   }
     
   </style>

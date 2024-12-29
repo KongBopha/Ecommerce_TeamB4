@@ -17,20 +17,20 @@
     <CategoryComponent />
     <div>
       <div class="grid grid-cols-3 gap-[60px]">
-        <CardComponent
+        <router-link to='/AirForce1'><CardComponent
           discount="20%"
           image="./src/assets/images/NAF1.png"
           title="Nike Air Force 1"
           price="115$"
           button="Checkout"
-        />
-        <CardComponent
+        /></router-link>
+        <router-link to="/AirJordan4"><CardComponent
           discount="15%"
-          image="./src/assets/images/NAF2.png"
-          title="Nike Air Force 2"
-          price="100$"
-          button="Card"
-        />
+          image="./src/assets/images/NAJ4/NAJ4_1.png"
+          title="Nike Air Jordan 4"
+          price="150$"
+          button="Checkout"
+        /></router-link>
         <CardComponent
           discount="30%"
           image="./src/assets/images/NAF3.png"
@@ -47,8 +47,8 @@
         />
         <CardComponent
           discount="10%"
-          image="./src/assets/images/Jordan.png"
-          title="Jordan"
+          image="./src/assets/images/jordan.png"
+          title="Jordan 1"
           price="300$"
           button="Checkout"
         />
