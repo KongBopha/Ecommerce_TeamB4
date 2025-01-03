@@ -15,6 +15,12 @@ const routes = [
     path: '/',
     name: 'HomeView',  
     component: HomeView,
+    children: [
+      { path: '', redirect: '/shoes' }, // Default route to /home/shoes
+      { path: 'shoes', component: () => import('../Views/products/Shoes.vue') },
+      { path: 'Accessories', component: () => import('../Views/products/Accessories.vue') },
+      { path: 'Health', component: () => import('../Views/products/Health.vue') },
+    ]
   },
   {
     path:'/aboutus',

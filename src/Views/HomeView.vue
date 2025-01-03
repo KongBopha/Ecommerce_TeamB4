@@ -15,55 +15,7 @@
   </div>
   <div class="relative flex space-x-[70px]">
     <CategoryComponent />
-    <div>
-      <div class="grid grid-cols-3 gap-[60px]">
-        <router-link to='/AirForce1'><CardComponent
-          discount="20%"
-          image="./src/assets/images/NAF1.png"
-          title="Nike Air Force 1"
-          price="115$"
-          button="Checkout"
-        /></router-link>
-        <router-link to="/AirJordan4"><CardComponent
-          discount="15%"
-          image="./src/assets/images/NAJ4/NAJ4_1.png"
-          title="Nike Air Jordan 4"
-          price="150$"
-          button="Checkout"
-        /></router-link>
-        <CardComponent
-          discount="30%"
-          image="./src/assets/images/NAF3.png"
-          title="Nike Air Force 3"
-          price="230$"
-          button="Card"
-        />
-        <CardComponent
-          discount="15%"
-          image="./src/assets/images/NAF4.png"
-          title="Nike Air Force 4"
-          price="140$"
-          button="Card"
-        />
-        <CardComponent
-          discount="10%"
-          image="./src/assets/images/jordan.png"
-          title="Jordan 1"
-          price="300$"
-          button="Checkout"
-        />
-        <CardComponent
-          discount="30%"
-          image="./src/assets/images/NAF5.png"
-          title="Nike Air Force 5"
-          price="400$"
-          button="Checkout"
-        />
-      </div>
-      <div class="absolute mt-[30px] right-[400px]">
-        <ButtonComponent />
-      </div>
-    </div>
+    <router-view />
   </div>
 </template>
 
