@@ -21,7 +21,7 @@ defineProps({
       >
         {{ discount }}
       </div>
-      <img :src="image" width="150" height="150" />
+      <img :src="image" class="min-w-[150px] max-w-[150px] min-h-[150px] max-h-[150px]" />
       <p>{{ title }}</p>
       <br />
       <div class="flex flex-row items-center gap-x-14">

@@ -1,5 +1,10 @@
 <template>
     <div class="product-view">
+      <router-link :to="'/shoes'"
+        class="flex border h-10 w-14 border-gray-300 items-center px-[10px] py-1 -mr-[72px] relative mt-4"
+      >
+        <span>Back</span>
+      </router-link>
       <ProductCard 
         :images="currentImages" 
         :mainImage="mainImage" 
