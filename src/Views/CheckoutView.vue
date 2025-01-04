@@ -1,11 +1,12 @@
 <script setup>
 import CheckoutComponent from "@/components/CheckoutComponent.vue";
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
   <section>
     <div class="flex justify-center items-center mt-10">
-      <div class="w-[750px] h-auto">
+      <div class="w-full h-screen">
         <div class="flex justify-between items-center px-10">
           <img src="@/assets/images/Brand.png" width="200" height="80" />
           <div class="flex items-center justify-center">
@@ -13,7 +14,7 @@ import CheckoutComponent from "@/components/CheckoutComponent.vue";
             <span class="pl-1 font-semibold text-base">Need Help</span>
           </div>
         </div>
-        <div class="bg-gray-50 w-[750px] h-auto pt-[10px] pb-5">
+        <div class="bg-gray-50 w-full h-screen pt-[10px] pb-5">
           <div class="flex items-center pl-[10px]">
             <i class="pi pi-angle-left"></i>
             <span class="pl-[1px] py-3 text-base">Back</span>
@@ -35,7 +36,10 @@ import CheckoutComponent from "@/components/CheckoutComponent.vue";
                 <!-- CheckoutComponent -->
                 <CheckoutComponent />
               </div>
-              <div class="flex justify-center mb-6">
+              <RouterLink
+                to="/checkout/payments"
+                class="flex justify-center mb-6 cursor-pointer"
+              >
                 <div
                   class="flex items-center justify-between bg-blue-500 border-2 border-black w-[360px] h-[50px] px-5"
                 >
@@ -46,7 +50,7 @@ import CheckoutComponent from "@/components/CheckoutComponent.vue";
                     $0
                   </div>
                 </div>
-              </div>
+              </RouterLink>
             </div>
           </div>
         </div>
