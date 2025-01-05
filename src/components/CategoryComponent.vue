@@ -2,7 +2,7 @@
 
 <template>
   <section>
-    <div class="border border-gray-300 w-64">
+    <div class="border border-gray-300 w-64 ml-[100px]">
       <router-link :to="'/shoes'"
         class="flex border border-gray-300 items-center px-[10px] py-1 gap-4"
       >

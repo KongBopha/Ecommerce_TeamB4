@@ -14,10 +14,7 @@
 .welcome-text {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;  
     max-width: 400px;
-    margin: 0 auto;
     font-family: Arial, sans-serif;
 }
 

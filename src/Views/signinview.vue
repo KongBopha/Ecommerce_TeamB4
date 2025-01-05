@@ -33,7 +33,9 @@ export default {
     height: 100vh;   
     display: flex;
     justify-content: center; 
-    padding-top: 70px;
+    padding-top: 140px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .wrapper {

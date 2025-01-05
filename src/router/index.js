@@ -1,3 +1,5 @@
+import { createRouter, createWebHistory } from 'vue-router';
+
 import Aboutus from '@/Views/Aboutus.vue';
 import AuthenView from '@/Views/AuthenView.vue';
 import Contactus from '@/Views/Contactus.vue';
@@ -6,12 +8,10 @@ import ProductViewNAF1 from '@/Views/ProductViewNAF1.vue';
 import ProductViewNAJ4 from '@/Views/ProductViewNAJ4.vue';
 import Signinview from '@/Views/signinview.vue';
 import Signupview from '@/Views/signupview.vue';
+import CheckoutView from '@/Views/CheckoutView.vue';
+import PaymentView from '@/Views/PaymentView.vue';
 
-import { createRouter, createWebHistory } from 'vue-router';
-
-import CheckoutView from '@/views/CheckoutView.vue';
-import PaymentView from '@/views/PaymentView.vue';
-
+// Import Components
 import CardInfo from '@/components/CardInfo.vue';
 import CardPin from '@/components/CardPin.vue';
 import BankInfo from '@/components/BankInfo.vue';
@@ -19,10 +19,9 @@ import TransferInfo from '@/components/TransferInfo.vue';
 import Button from '@/components/button.vue';
 
 const routes = [
-  // Button component is just for testing purposes. You can remove and connect it to the right route.
   {
     path: '/',
-    name: 'HomeView',  
+    name: 'HomeView',
     component: HomeView,
     children: [
       { path: '', redirect: '/shoes' }, // Default route to /home/shoes
@@ -30,6 +29,43 @@ const routes = [
       { path: 'Accessories', component: () => import('../Views/products/Accessories.vue') },
       { path: 'Health', component: () => import('../Views/products/Health.vue') },
     ]
+  },
+  {
+    path: '/aboutus',
+    name: 'aboutus',
+    component: Aboutus,
+  },
+  {
+    path: '/Signin',
+    name: 'SignUp',
+    component: AuthenView,
+  },
+  {
+    path: '/contact',
+    name: 'contactus',
+    component: Contactus,
+  },
+  {
+    path: '/signinview',
+    name: 'signinview',
+    component: Signinview,
+  },
+  {
+    path: '/signupview',
+    name: 'signupview',
+    component: Signupview,
+  },
+  {
+    path: '/AirForce1',
+    name: 'Air-Force-1',
+    component: ProductViewNAF1,
+    props: true,
+  },
+  {
+    path: '/AirJordan4',
+    name: 'Air-Jordan-4',
+    component: ProductViewNAJ4,
+    props: true,
   },
   {
     path: '/checkout/payments',
@@ -47,11 +83,12 @@ const routes = [
         path: 'bank',
         component: BankInfo,
       },
-      { path: 'transfer', 
+      {
+        path: 'transfer',
         component: TransferInfo,
       },
     ]
-  }
+  },
 ];
 
 const router = createRouter({

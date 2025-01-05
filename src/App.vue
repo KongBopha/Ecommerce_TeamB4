@@ -1,26 +1,18 @@
-<script setup>
-import { RouterView } from "vue-router";
-</script>
-
-<template>
-  <RouterView />
-</template>
-<script setup>
-import { RouterView } from "vue-router";
-import Footer from "./components/Footer.vue";
-import Promobox from "./components/Promobox.vue";
-</script>
-
 <template>
   <div class="layout">
     <Navbar />
-    <div class="promobox-container">
-      <!-- <Promobox /> -->
-    </div>
-    <RouterView />
+    <main class="content">
+      <RouterView />
+    </main>
     <Footer />
   </div>
 </template>
+
+<script setup>
+import { RouterView } from "vue-router";
+import Footer from "@/components/Footer.vue";
+import Navbar from "@/components/Navbar.vue";
+</script>
 
 <style scoped>
 .layout {
@@ -28,19 +20,19 @@ import Promobox from "./components/Promobox.vue";
   flex-direction: column;
   min-height: 100vh;
 }
-body {
-  background-color: white;
-}
-.promobox-container {
-  background-color: white;
-  padding: 20px;
-  box-shadow: 0 2px 10 px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-}
-RouterView {
+
+.content {
   flex: 1;
+  padding: 20px;
 }
+
+body {
+  background-color: #f9f9f9;
+  font-family: "Arial", sans-serif;
+}
+
 footer {
   margin-top: auto;
 }
+
 </style>

@@ -18,10 +18,7 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    name: "UserInfo",
-  };
+  <script setup>
   </script>
   
   <style scoped>

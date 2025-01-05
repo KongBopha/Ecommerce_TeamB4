@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { useStoreFunction } from "@/stores/storefunctions";
+import { useStoreFunction } from "@/stores/useAuthStore";
 import shoes from "../assets/images/logo.png";
 import { useRouter } from "vue-router";
 
@@ -205,6 +205,6 @@ input::placeholder {
   justify-content: space-between;
   gap: 30px;
   font-size: 20px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 </style>

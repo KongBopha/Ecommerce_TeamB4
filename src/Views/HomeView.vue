@@ -1,170 +1,88 @@
 <template>
   <div class="container">
-    <main>
-      <h1>
-        Welcome to SparkFoot—where every step sparks something extraordinary.
-        Discover a world of footwear designed to elevate your style, ignite your
-        confidence, and keep you moving with energy.
-      </h1>
-    </main>
-    <input
-      type="text"
-      v-model="searchQuery"
-      placeholder="Search here..."
-      class="searchBar"
-    />
-    <font-awesome-icon class="icon-white" :icon="['fas', 'magnifying-glass']" />
+    <h1 class="hero-title">
+      Welcome to SparkFoot—where every step sparks something extraordinary. 
+      Discover a world of footwear designed to elevate your style, ignite your confidence, 
+      and keep you moving with energy.
+    </h1>
+
+    <!-- Search Bar -->
+    <div class="search-bar-container">
+      <input
+        type="text"
+        v-model="searchQuery"
+        placeholder="Search here..."
+        class="search-bar"
+      />
+      <font-awesome-icon class="search-icon" :icon="['fas', 'magnifying-glass']" />
+    </div>
+
+    <!-- Promo Section -->
+    <div class="promo-section">
+      <Promobox />
+    </div>
+
+    <!-- Category and Content -->
+    <div class="content-container">
+      <CategoryComponent />
+      <router-view />
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  setup() {
-    return {
-      searchQuery: "",
-    };
-  },
-};
-</script>
-
-<style scoped>
-main {
-  width: 650px;
-  height: auto;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: x-small;
-  padding: 20px;
-  text-align: start;
-}
-
-.container {
-  height: auto;
-  width: auto;
-  padding-top: 100px;
-  padding-right: 800px;
-  padding-bottom: 100px;
-}
-.searchBar {
-  width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border: 2px solid #222222;
-  border-radius: 20px;
-  text-indent: 50px;
-}
-.icon-white {
-  position: absolute;
-  color: rgb(0, 0, 0);
-  margin-left: 20px;
-  margin-top: -30px;
-}
-input::placeholder {
-  font-style: italic;
-  opacity: 0.8;
-  text-indent: 50px;
-}
-input {
-  position: relative;
-  display: block;
-  width: 330px;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  font-size: 12px;
-  border: none;
-  border-radius: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-</style>
-<template>
-  <div class="container">
-    <main>
-      <h1>
-        Welcome to SparkFoot—where every step sparks something extraordinary.
-        Discover a world of footwear designed to elevate your style, ignite your
-        confidence, and keep you moving with energy.
-      </h1>
-    </main>
-    <input
-      type="text"
-      v-model="searchQuery"
-      placeholder="Search here..."
-      class="searchBar"
-    />
-    <font-awesome-icon class="icon-white" :icon="['fas', 'magnifying-glass']" />
-  </div>
-  <div>
-    <Promobox />
-  </div>
-  <div class="relative flex space-x-[70px]">
-    <CategoryComponent />
-    <router-view />
-  </div>
-</template>
-
-<script>
-import CardComponent from "@/components/CardComponent.vue";
-import CategoryComponent from "@/components/CategoryComponent.vue";
-import ButtonComponent from "@/components/ButtonComponent.vue";
+<script setup>
+import { ref } from "vue";
 import Promobox from "@/components/Promobox.vue";
+import CategoryComponent from "@/components/CategoryComponent.vue";
 
-export default {
-  components: { CategoryComponent, CardComponent, ButtonComponent, Promobox },
-  setup() {
-    return {
-      searchQuery: "",
-    };
-  },
-};
+const searchQuery = ref("");
 </script>
 
 <style scoped>
-main {
-  width: 650px;
-  height: auto;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: x-small;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  text-align: start;
 }
 
-.container {
-  height: auto;
-  width: auto;
-  padding-right: 800px;
-  padding-bottom: 620px;
+.hero-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
 }
-.searchBar {
-  width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border: 2px solid #222222;
-  border-radius: 20px;
-  text-indent: 50px;
-}
-.icon-white {
-  position: absolute;
-  color: rgb(0, 0, 0);
-  margin-left: 20px;
-  margin-top: -30px;
-}
-input::placeholder {
-  font-style: italic;
-  opacity: 0.8;
-  text-indent: 50px;
-}
-input {
+
+.search-bar-container {
   position: relative;
-  display: block;
-  width: 330px;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-  font-size: 12px;
-  border: none;
-  border-radius: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.search-bar {
+  width: 50%;
+  max-width: 500px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #222222;
+  border-radius: 25px;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 25%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+}
+
+.promo-section {
+  margin-bottom: 40px;
+}
+
+.content-container {
+  display: flex;
+  gap: 50px;
 }
 </style>
