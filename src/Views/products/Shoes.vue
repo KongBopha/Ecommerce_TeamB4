@@ -1,66 +1,177 @@
 <template>
-    <div class="mb-5">
-      <div class="grid grid-cols-3 gap-[60px]">
-        <router-link to='/AirForce1'><CardComponent
-          discount="20%"
-          image="./src/assets/images/NAF1.png"
-          title="Nike Air Force 1"
-          price="115$"
-          button="Checkout"
-        /></router-link>
-        <router-link to="/AirJordan4"><CardComponent
-          discount="15%"
-          image="./src/assets/images/NAJ4/NAJ4_1.png"
-          title="Nike Air Jordan 4"
-          price="150$"
-          button="Checkout"
-        /></router-link>
-        <CardComponent
-          discount="30%"
-          image="./src/assets/images/NAF3.png"
-          title="Nike Air Force 3"
-          price="230$"
-          button="Card"
+  <div class="mb-5">
+    <input
+          type="text"
+          v-model="searchQuery"
+          id="default-search"
+          class="search-input block w-full p-4 ps-10 text-sm text-gray-400 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Search Mockups, Logos..."
+          required
         />
+    <div class="grid grid-cols-3 gap-[60px]">
+      <router-link
+        v-for="items in FilterItems"
+        :key="items.id"
+        :to="items.view"
+      >
         <CardComponent
-          discount="15%"
-          image="./src/assets/images/NAF4.png"
-          title="Nike Air Force 4"
-          price="140$"
-          button="Card"
+          :discount="items.discount"
+          :image="items.image"
+          :title="items.title"
+          :price="items.price"
+          :button="items.button"
         />
-        <CardComponent
-          discount="10%"
-          image="./src/assets/images/jordan.png"
-          title="Jordan 1"
-          price="300$"
-          button="Checkout"
-        />
-        <CardComponent
-          discount="30%"
-          image="./src/assets/images/NAF5.png"
-          title="Nike Air Force 5"
-          price="400$"
-          button="Checkout"
-        />
-      </div>
-      <div class="absolute mt-[30px] right-[400px]">
-        <ButtonComponent />
-      </div>
+      </router-link>
     </div>
-  </template>
-  
-  <script>
-  import ButtonComponent from '@/components/ButtonComponent.vue';
-  import CardComponent from '@/components/CardComponent.vue';
-  export default {
-    components: {
-        ButtonComponent,
-        CardComponent
+    <div @click="companiesVisible += step" class="absolute mt-[30px] right-[400px]">
+      <ButtonComponent />
+    </div>
+  </div>
+</template>
+
+<script>
+import ButtonComponent from '@/components/ButtonComponent.vue';
+import CardComponent from '@/components/CardComponent.vue';
+
+export default {
+  components: {
+    ButtonComponent,
+    CardComponent,
+  },
+  name: 'Shoes',
+  data() {
+    return {
+      searchQuery: '',
+      items: [
+        {
+          view: "/AirForce1",
+          discount: "20%",
+          image   : "./src/assets/images/NAF1.png",
+          title   : "Nike Air Force 1",
+          price   : "115$",
+          button  : "Checkout",
+          id: 1,
+        },
+        {
+          view: "/AirJordan4",
+          discount: "15%",
+          image: "./src/assets/images/NAJ4/NAJ4_1.png",
+          title: "Nike Air Jordan 4",
+          price: "150$",
+          button: "Checkout",
+          id: 2,
+        },
+        {
+          view: "/AirForce1",
+          discount: "30%",
+          image: "./src/assets/images/NAF3.png",
+          title: "Nike Air Force 3",
+          price: "230$",
+          button: "Card",
+          id: 3,
+        },
+        {
+          view: "/AirForce1",
+          discount: "15%",
+          image: "./src/assets/images/NAF4.png",
+          title: "Nike Air Force 4",
+          price: "140$",
+          button: "Card",
+          id: 4,
+        },
+        {
+          view: "/AirForce1",
+          discount: "10%",
+          image: "./src/assets/images/jordan.png",
+          title: "Jordan 1",
+          price: "300$",
+          button: "Checkout",
+          id: 5,
+        },
+        {
+          view: "/AirForce1",
+          discount: "30%",
+          image: "./src/assets/images/NAF5.png",
+          title: "Nike Air Force 5",
+          price: "400$",
+          button: "Checkout",
+          id: 6,
+        },
+        {
+          view: "/AirForce1",
+          discount: "30%",
+          image: "./src/assets/images/A_aerobounce.png",
+          title: "Addidas Aerobounce",
+          price: "400$",
+          button: "Checkout",
+          id: 7,
+        },
+        {
+          view: "/AirForce1",
+          discount: "30%",
+          image: "./src/assets/images/A_ashpearl.png",
+          title: "Addidas Ash Pearl",
+          price: "400$",
+          button: "Checkout",
+          id: 8,
+        },
+        {
+          view: "/AirForce1",
+          discount: "30%",
+          image: "./src/assets/images/A_galaxy6.png",
+          title: "Addidas Galaxy 6",
+          price: "400$",
+          button: "Checkout",
+          id: 9,
+        },
+        {
+          view: "/AirForce1",
+          discount: "30%",
+          image: "./src/assets/images/A_multix.png",
+          title: "Addidas Multi X",
+          price: "400$",
+          button: "Checkout",
+          id: 10,
+        },
+        {
+          view: "/AirForce1",
+          discount: "30%",
+          image: "./src/assets/images/A_primeblue_wbg.png",
+          title: "Addidas Prime Blue",
+          price: "400$",
+          button: "Checkout",
+          id: 11,
+        },
+        {
+          view: "/AirForce1",
+          discount: "30%",
+          image: "./src/assets/images/A_whitecore.png",
+          title: "Addidas White Core",
+          price: "400$",
+          button: "Checkout",
+          id: 12,
+        },
+      ],
+      companiesVisible: 6,
+      step: 3,
+    };
+  },
+  computed: {
+    FilterItems() {
+      const filtered = this.searchQuery
+        ? this.items.filter(
+            (items) =>
+              items.title &&
+              typeof items.title === 'string' &&
+              items.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+          )
+        : this.items;
+
+      return filtered.slice(0, this.companiesVisible);
     },
-    name: 'Shoes'
-  }
-  </script>
+  },
+};
+</script>
 
 <style scoped>
 main {
@@ -68,18 +179,18 @@ main {
   height: auto;
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-  font-size:  x-small;
-  padding: 20px;   
-  text-align: start;  
-
+  font-size: x-small;
+  padding: 20px;
+  text-align: start;
 }
- 
+
 .container {
-  height: auto;  
+  height: auto;
   width: auto;
   padding-right: 800px;
   padding-bottom: 620px;
 }
+
 .searchBar {
   width: 100%;
   padding: 12px;
@@ -87,30 +198,31 @@ main {
   border: 2px solid #222222;
   border-radius: 20px;
   text-indent: 50px;
-
 }
-.icon-white{
-    position: absolute;
-    color:rgb(0, 0, 0);
-    margin-left: 20px;
-    margin-top: -30px;  
-  }
-input::placeholder { 
-  font-style: italic;  
-  opacity: 0.8;  
+
+.icon-white {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  margin-left: 20px;
+  margin-top: -30px;
+}
+
+input::placeholder {
+  font-style: italic;
+  opacity: 0.8;
   text-indent: 50px;
 }
-  input {
+
+input {
   position: relative;
   display: block;
   width: 330px;
-  padding: 10px  ;
+  padding: 10px;
   background-color: rgb(255, 255, 255);
   font-size: 12px;
   border: none;
   border-radius: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  
 }
 </style>
