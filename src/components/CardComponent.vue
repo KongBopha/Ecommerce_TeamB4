@@ -14,14 +14,14 @@ defineProps({
 <template>
   <section>
     <div
-      class="relative flex flex-col items-center border border-black rounded-[10px] w-56 h-[260px] p-[10px]"
+      class="relative flex flex-col items-center border border-black rounded-[10px] w-60 h-[300px] p-[10px]"
     >
       <div
         class="absolute bg-yellow-300 text-sm px-[10px] py-1 rounded-3xl font-medium top-2 right-2"
       >
         {{ discount }}
       </div>
-      <img :src="image" class="min-w-[150px] max-w-[150px] min-h-[150px] max-h-[150px]" />
+      <img :src="image" class="min-w-[170px] max-w-[170px] min-h-[170px] max-h-[170px]" />
       <p>{{ title }}</p>
       <br />
       <div class="flex flex-row items-center gap-x-14">
