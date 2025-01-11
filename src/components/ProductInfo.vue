@@ -1,6 +1,6 @@
 <template>
   <div class="product-info">
-    <h1 class="product-title"><strong>{{ title }}</strong></h1>
+    <h1 class="product-title">{{ title }}</h1>
     <p class="product-price">{{ price }}</p>
     <div class="product-color">
       <p>COLOUR</p>
@@ -31,7 +31,7 @@
         </button>
       </div>
     </div>
-    <button class="add-to-cart">Add to Cart</button>
+    <router-link to="/checkout"><button class="add-to-cart">Add to Cart</button></router-link>
   </div>
 </template>
 
@@ -45,7 +45,7 @@ export default {
     sizeFit: String,
     review: String,
     colors: Array,
-    sizes: Array,  // Receiving sizes as a prop
+    sizes: Array,
   },
   data() {
     return {

@@ -4,8 +4,7 @@ import Aboutus from '@/Views/Aboutus.vue';
 import AuthenView from '@/Views/AuthenView.vue';
 import Contactus from '@/Views/Contactus.vue';
 import HomeView from '@/Views/HomeView.vue';
-import ProductViewNAF1 from '@/Views/ProductViewNAF1.vue';
-import ProductViewNAJ4 from '@/Views/ProductViewNAJ4.vue';
+import ProductView from '@/Views/ProductView.vue';
 import Signinview from '@/Views/signinview.vue';
 import Signupview from '@/Views/signupview.vue';
 import CheckoutView from '@/Views/CheckoutView.vue';
@@ -56,16 +55,15 @@ const routes = [
     component: Signupview,
   },
   {
-    path: '/AirForce1',
-    name: 'Air-Force-1',
-    component: ProductViewNAF1,
+    path: '/shoes/:id',
+    name: 'ProductView',
+    component: ProductView,
     props: true,
   },
   {
-    path: '/AirJordan4',
-    name: 'Air-Jordan-4',
-    component: ProductViewNAJ4,
-    props: true,
+    path: '/checkout',
+    name: 'CheckoutView',
+    component: CheckoutView
   },
   {
     path: '/checkout/payments',
