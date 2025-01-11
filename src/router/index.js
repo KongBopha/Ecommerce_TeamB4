@@ -16,6 +16,7 @@ import CardPin from '@/components/CardPin.vue';
 import BankInfo from '@/components/BankInfo.vue';
 import TransferInfo from '@/components/TransferInfo.vue';
 import Button from '@/components/button.vue';
+import { fromJSON } from 'postcss';
 
 const routes = [
   {
@@ -92,6 +93,12 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition){
+      return savedPosition;
+    }
+    return { top:0, behavior: 'smooth'};
+  }
 });
 
 export default router;
