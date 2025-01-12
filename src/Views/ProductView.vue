@@ -25,7 +25,7 @@
 
 <script>
 import { useProductStore } from '@/stores/products';
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import ProductCard from '@/components/ProductCard.vue';
 
@@ -53,6 +53,11 @@ export default {
     const updateMainImage = (image) => {
       mainImage.value = image; 
     };
+
+    onMounted(() => {
+      window.scrollTo(0, 0);
+    });
+
 
     return {
       product,
