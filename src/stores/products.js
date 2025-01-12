@@ -53,10 +53,39 @@ import REDRUN_1 from '@/assets/images/REDRUN/REDRUN_1.png';
 import REDRUN_2 from '@/assets/images/REDRUN/REDRUN_2.png';
 import REDRUN_3 from '@/assets/images/REDRUN/REDRUN_3.png';
 import REDRUN_4 from '@/assets/images/REDRUN/REDRUN_4.png';
+import BALEN_1 from '@/assets/images/BALEN/BALEN_1.png';
+import BALEN_2 from '@/assets/images/BALEN/BALEN_2.png';
+import BALEN_3 from '@/assets/images/BALEN/BALEN_3.png';
+import BALEN_4 from '@/assets/images/BALEN/BALEN_4.png';
+import NAJ1_1 from '@/assets/images/NAJ1/NAJ1_1.png';
+import NAJ1_2 from '@/assets/images/NAJ1/NAJ1_2.png';
+import NAJ1_3 from '@/assets/images/NAJ1/NAJ1_3.png';
+import NAJ1_4 from '@/assets/images/NAJ1/NAJ1_4.png';
+import CAMPUS_1 from '@/assets/images/CAMPUS/CAMPUS_1.png';
+import CAMPUS_2 from '@/assets/images/CAMPUS/CAMPUS_2.png';
+import ULTRA_1 from '@/assets/images/ULTRA/ULTRA_1.png';
+import ULTRA_2 from '@/assets/images/ULTRA/ULTRA_2.png';
+import ULTRA_3 from '@/assets/images/ULTRA/ULTRA_3.png';
+import ULTRA_4 from '@/assets/images/ULTRA/ULTRA_4.png';
+
+import SOCKS_S1 from '@/assets/images/SOCKS/SOCKS_S1.png';
+import SOCKS_S2 from '@/assets/images/SOCKS/SOCKS_S2.png';
+import SOCKS_L1 from '@/assets/images/SOCKS/SOCKS_L1.png';
+import SOCKS_L2 from '@/assets/images/SOCKS/SOCKS_L2.png';
+import CLEAN_1 from '@/assets/images/SHOECARE/CLEAN_1.png';
+import CLEAN_2 from '@/assets/images/SHOECARE/CLEAN_2.png';
+import SPRAY_1 from '@/assets/images/SHOECARE/SPRAY_1.png';
+import SPRAY_2 from '@/assets/images/SHOECARE/SPRAY_2.png';
+import FOAM_1 from '@/assets/images/SHOECARE/FOAM_1.png';
+import TRAVEL_1 from '@/assets/images/SHOECARE/TRAVEL_1.png';
+import TRAVEL_2 from '@/assets/images/SHOECARE/TRAVEL_2.png';
+import CREASE_1 from '@/assets/images/SHOECARE/CREASE_1.png';
+import CREASE_2 from '@/assets/images/SHOECARE/CREASE_2.png';
 
 export const useProductStore = defineStore('productStore', {
   state: () => ({
     products: [
+      // Shoes
       {
         id: 1,
         name: 'Nike Air Force 1',
@@ -237,6 +266,204 @@ export const useProductStore = defineStore('productStore', {
         reviewer: 'Walter White',
         images: {
           red: [REDRUN_1, REDRUN_2, REDRUN_3, REDRUN_4],
+        },
+      },
+      {
+        id: 13,
+        name: 'Balenciaga Speed Sneaker',
+        price: '$350',
+        color: 'black',
+        colors: ['black'],
+        sizes: [36, 37, 41, 42, 43],
+        description: "These are most comfortable designer shoes I’ve bought so far!",
+        sizeFit: 'Fits true to size; Order your normal size.',
+        review: 'These are most comfortable designer shoes I’ve bought so far!',
+        reviewer: 'John Wicked',
+        images: {
+          black: [BALEN_1, BALEN_2, BALEN_3, BALEN_4],
+        },
+      },
+      {
+        id: 14,
+        name: 'Nike Air Jordan 1 High "University Blue"',
+        price: '$240',
+        color: 'blue',
+        colors: ['blue'],
+        sizes: [36, 37, 40, 41, 42, 43],
+        description: "Be careful: there are many reasons to be obsessed with these Air Jordan 1 Retro High 'University Blue' sneakers from Jordan, like their contrasting light blue panels to the iconic high-top silhouette that was first debuted by Michael Jordan in 1985. You've been warned, they're a retro classic with a modern edge. ",
+        sizeFit: 'Fits true to size.',
+        review: 'As someone who has been in the sneaker game for a while, I can confidently say that the Air Jordan 1 High "University Blue / UNC" is a marvel of craftsmanship. The premium leather and suede construction gives the sneaker a luxurious feel, while the high-top design ensures a secure and comfortable fit.',
+        reviewer: 'Gustavo Fring',
+        images: {
+          blue: [NAJ1_1, NAJ1_2, NAJ1_3, NAJ1_4],
+        },
+      },
+      {
+        id: 15,
+        name: 'adidas x Bad Bunny Campus',
+        price: '$120',
+        color: 'brown',
+        colors: ['brown'],
+        sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+        description: "Simple yet timeless, the adidas Originals Bad Bunny Campus fuses nostalgia and modern style for versatile, everyday wear. Featuring a double-tongue and double-heel construction, these sneakers bring back the iconic Campus silhouette with a twist. Offering a familiar fit and feel, these trainers have been rolled out in a dark brown hairy suede material detailed by chalk white and pink accents to provide a distinctive look and eye-catching style. Completed with the Bad Bunny all-seeing eye on the tongue and an adidas x Bad Bunny logo on the sockliner, the adidas Originals Bad Bunny Campus blends fashion and function to make you stand out in every fit.",
+        sizeFit: 'Fits large; we recommend ordering a size up.',
+        review: "It's a very nice shoe. I have one other. The lighter brown colorway and I bought that true to size. I went a half size down and this fits very well. It looks good too.",
+        reviewer: 'Karl Anthony Towns',
+        images: {
+          brown: [CAMPUS_1, CAMPUS_2],
+        },
+      },
+      {
+        id: 16,
+        name: 'adidas Ultraboost DNA',
+        price: '$100',
+        color: 'yellow',
+        colors: ['yellow'],
+        sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+        description: "The adidas x LEGO Ultra Boost in Yellow and Black has an upper with a base of black Primeknit for lightweight breathability. Black and yellow synthetic overlays give the shoe style as well as support for your foot while running. The bright yellow heel and three side-panel stripes have raised circular lugs as a nod to LEGO. Yellow laces crisscross over a black tongue with dual branding.",
+        sizeFit: 'Fits true to size.',
+        review: 'Adidas Ultraboost DNA shoes is good looking and comfortable (especially if you have a narrow foot).',
+        reviewer: 'Jon Snow',
+        images: {
+          yellow: [ULTRA_1, ULTRA_2, ULTRA_3, ULTRA_4],
+        },
+      },
+      // Accessories
+      {
+        id: 17,
+        name: 'Nike 6 Pack Dri-FIT Plus Quarter Socks',
+        price: '$10',
+        color: 'white',
+        colors: ['white', 'black'],
+        sizes: ['M', 'L'],
+        description: 'Power through your workout with the Nike Everyday Plus Cushion Ankle Training Socks (6 Pair). Dri-FIT technology helps you stay dry and comfortable. Breathable mesh at the top of the foot for enhanced ventilation. 1/4-length silhouette provides comfortable coverage around the ankle and calf. Arch band contours around the foot for a locked in fit. 66% cotton/31% polyester/2% spandex/1% nylon.',
+        sizeFit: 'M size for shoe size 35-39; L size for shoe size 40-45',
+        review: 'I was satisfied with everything about the process. The app is amazing, from the ordering to the checkout options. Next, the delivery time is superb. And lastly, the product is A-1 quality at the price point.',
+        reviewer: 'Benjamin Franklin',
+        images: {
+          white: [SOCKS_S1],
+          black: [SOCKS_S2],
+        },
+      },
+      {
+        id: 18,
+        name: 'Nike 6 Pack Everyday Plus Cushioned Socks',
+        price: '$12',
+        color: 'white',
+        colors: ['white', 'black'],
+        sizes: ['M', 'L'],
+        description: 'Power through your workout with the Nike Everyday Plus Cushion Crew Training Socks (6 Pair). Dri-FIT technology helps you stay dry and comfortable. Breathable mesh at the top of the foot for enhanced ventilation. Crew silhouette provides comfortable coverage around the ankle and calf. Arch band contours around the foot for a locked in fit. 66% cotton/31% polyester/2% spandex/1% nylon.',
+        sizeFit: 'M size for shoe size 35-39; L size for shoe size 40-45',
+        review: 'Absolutely love these socks, super comfortable and absorb any sweat from a long day. Look great on the foot and hug the leg nicely too.',
+        reviewer: 'Ronaldo Nazario',
+        images: {
+          white: [SOCKS_L1],
+          black: [SOCKS_L2],
+        },
+      },
+      {
+        id: 19,
+        name: 'Jason Markk Mini Starter Kit',
+        price: '$8',
+        color: 'white',
+        colors: ['white'],
+        sizes: ['S'],
+        description: "The Jason Markk Mini Starter Kit always lets you put your best foot forward. Featuring a deep cleaning solution and standard cleaning brush, this cleaning kit is safe to use on all colors and materials including suede, nubuck, canvas, cotton, knit, and more. The standard cleaning brush fitted with stiff bristles is tough on stubborn stains and keeps your shoes shining bright no matter what, while the cleaning solution takes care of delicate materials and conditions your shoes so they always look like they’re fresh out of the box. Clean your sneakers and keep them looking brand new with the Jason Markk Mini Starter Kit.",
+        sizeFit: 'Fits true to size.',
+        review: 'Very happy with my purchase, the product is excellent and with a small amount you can clean the entire tennis shoe, I have been using it for many years and I recommend it.',
+        reviewer: 'Zlatan',
+        images: {
+          white: [CLEAN_1, CLEAN_2],
+        },
+      },
+      {
+        id: 20,
+        name: 'Jason Markk Repel Spray Full Size',
+        price: '$10',
+        color: 'white',
+        colors: ['white'],
+        sizes: ['L'],
+        description: "No one likes dirty sneakers. Keep your favorite pair of sneakers fresh as new with the Jason Markk Repel Spray Full Size. Creating a durable, breathable barrier that effectively repels liquids and stains, this ultimate sneaker accessory helps you keep your shoes looking pristine in the long run. The PFOA-free water-based formula is safe to use on all materials, including suede, nubuck, cotton, canvas, nylon, knit, and more. Protect your favorite sneakers from stains with the Jason Markk Repel Spray Full Size.",
+        sizeFit: 'Fits true to size.',
+        review: 'Got this product for fall for all my new boots. It has done a great job at protecting the boots. I have got them wet and the water marks didn’t stain the boots. It is easy to apply and sprays a good amount at a time!',
+        reviewer: 'Kyrie Irving',
+        images: {
+          white: [SPRAY_1, SPRAY_2],
+        },
+      },
+      {
+        id: 21,
+        name: 'Crep Protect Foam x Cleaner',
+        price: '$10',
+        color: 'white',
+        colors: ['white'],
+        sizes: ['M'],
+        description: "Say goodbye to dirt and grime with the Crep Protect FoamX Cleaner. Designed to be your sneakers' new best friend, this cleaner comes with an innovative built-in pump applicator to transform cleaning into a breeze. Perfect for leather, canvas, and nylon sneakers, the FoamX features an eco-friendly, water-based formula to ensure that both your sneakers and the environment stay protected. Say hello to a new era of sneaker care with the Crep Protect FoamX Cleaner.",
+        sizeFit: 'Fits true to size.',
+        review: 'Love Crep protect for our shoes and boots. Have the cleaner kits as well. Always have this one on hand! Does what it says, protects long term, doesn’t damage.',
+        reviewer: 'James Harden',
+        images: {
+          white: [FOAM_1],
+        },
+      },
+      {
+        id: 22,
+        name: 'Force Field Crease Protector',
+        price: '$6',
+        color: 'white',
+        colors: ['white'],
+        sizes: ['M'],
+        description: "Keep your kicks looking clean and sharp with the Crease Preventers. Designed to fit comfortably inside the toebox of your shoes to help prevent creasing, the Crease Preventers are designed to protect the shape of your sneakers. Each Crease Preventer includes two adhesive strips on top for easy placement, and they're designed to stay in place during movement.",
+        sizeFit: 'Fits true to size.',
+        review: 'I bought this awhile ago and it works amazingly, I have airfoces and they keep them nice looking.',
+        reviewer: 'Long Sovichet',
+        images: {
+          white: [CREASE_1, CREASE_2],
+        },
+      },
+      {
+        id: 23,
+        name: 'Force Field Crease Protector',
+        price: '$6',
+        color: 'white',
+        colors: ['white'],
+        sizes: ['M'],
+        description: "Keep your kicks looking clean and sharp with the Crease Preventers. Designed to fit comfortably inside the toebox of your shoes to help prevent creasing, the Crease Preventers are designed to protect the shape of your sneakers. Each Crease Preventer includes two adhesive strips on top for easy placement, and they're designed to stay in place during movement.",
+        sizeFit: 'Fits true to size.',
+        review: 'I bought this awhile ago and it works amazingly, I have airfoces and they keep them nice looking.',
+        reviewer: 'Long Sovichet',
+        images: {
+          white: [CREASE_1, CREASE_2],
+        },
+      },
+      {
+        id: 24,
+        name: 'Force Field Crease Protector',
+        price: '$6',
+        color: 'white',
+        colors: ['white'],
+        sizes: ['M'],
+        description: "Keep your kicks looking clean and sharp with the Crease Preventers. Designed to fit comfortably inside the toebox of your shoes to help prevent creasing, the Crease Preventers are designed to protect the shape of your sneakers. Each Crease Preventer includes two adhesive strips on top for easy placement, and they're designed to stay in place during movement.",
+        sizeFit: 'Fits true to size.',
+        review: 'I bought this awhile ago and it works amazingly, I have airfoces and they keep them nice looking.',
+        reviewer: 'Long Sovichet',
+        images: {
+          white: [CREASE_1, CREASE_2],
+        },
+      },
+      {
+        id: 25,
+        name: 'Force Field Crease Protector',
+        price: '$6',
+        color: 'white',
+        colors: ['white'],
+        sizes: ['M'],
+        description: "Keep your kicks looking clean and sharp with the Crease Preventers. Designed to fit comfortably inside the toebox of your shoes to help prevent creasing, the Crease Preventers are designed to protect the shape of your sneakers. Each Crease Preventer includes two adhesive strips on top for easy placement, and they're designed to stay in place during movement.",
+        sizeFit: 'Fits true to size.',
+        review: 'I bought this awhile ago and it works amazingly, I have airfoces and they keep them nice looking.',
+        reviewer: 'Long Sovichet',
+        images: {
+          white: [CREASE_1, CREASE_2],
         },
       },
       // Add other products here...
