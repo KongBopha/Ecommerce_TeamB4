@@ -31,9 +31,9 @@ export const useproductStore = defineStore('product', {
       { id: 22, category: "accessories", title: "Crease Protector", price: 6, discount: 30, image: "./src/assets/images/SHOECARE/CREASE_1.png", button: "Checkout" },
       
       // Health Category
-      { id: 23, category: "health", title: "Vitamin A", price: 115, discount: 20, image: "./src/assets/images/vitamin_a.png", button: "Checkout" },
-      { id: 24, category: "health", title: "Vitamin C", price: 150, discount: 15, image: "./src/assets/images/vitamin_c.png", button: "Checkout" },
-      { id: 25, category: "health", title: "Vitamin D", price: 230, discount: 30, image: "./src/assets/images/vitamin_d.png", button: "Checkout" },
+      { id: 23, category: "health", title: "Fitbit Charge 6", price: 130, discount: 20, image: "./src/assets/images/FITBIT/CHARGE_O1.png", button: "Checkout" },
+      { id: 24, category: "health", title: "Fitbit Inspire 3", price: 100, discount: 15, image: "./src/assets/images/FITBIT/INSPIRE_B1.png", button: "Checkout" },
+      { id: 25, category: "health", title: "Fitbit Luxe", price: 170, discount: 30, image: "./src/assets/images/FITBIT/LUXE_1.png", button: "Checkout" },
 
     ],
     cart: [],

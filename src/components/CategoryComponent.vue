@@ -48,7 +48,7 @@ const route = useRoute(); // Access the current route
           alt="Health & Wellness Icon"
           class="w-6 h-6"
         />
-        <span>Health and Wellness</span>
+        <span>Health and Fitness</span>
       </router-link>
     </div>
   </section>

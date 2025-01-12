@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 
+// shoes
 import AF1_W1 from '@/assets/images/NAF1/AF1_W1.png';
 import AF1_W2 from '@/assets/images/NAF1/AF1_W2.png';
 import AF1_W3 from '@/assets/images/NAF1/AF1_W3.png';
@@ -68,6 +69,7 @@ import ULTRA_2 from '@/assets/images/ULTRA/ULTRA_2.png';
 import ULTRA_3 from '@/assets/images/ULTRA/ULTRA_3.png';
 import ULTRA_4 from '@/assets/images/ULTRA/ULTRA_4.png';
 
+// accessories
 import SOCKS_S1 from '@/assets/images/SOCKS/SOCKS_S1.png';
 import SOCKS_S2 from '@/assets/images/SOCKS/SOCKS_S2.png';
 import SOCKS_L1 from '@/assets/images/SOCKS/SOCKS_L1.png';
@@ -81,6 +83,22 @@ import TRAVEL_1 from '@/assets/images/SHOECARE/TRAVEL_1.png';
 import TRAVEL_2 from '@/assets/images/SHOECARE/TRAVEL_2.png';
 import CREASE_1 from '@/assets/images/SHOECARE/CREASE_1.png';
 import CREASE_2 from '@/assets/images/SHOECARE/CREASE_2.png';
+
+// health & fitness
+import CHARGE_O1 from '@/assets/images/FITBIT/CHARGE_O1.png';
+import CHARGE_O2 from '@/assets/images/FITBIT/CHARGE_O2.png';
+import CHARGE_O3 from '@/assets/images/FITBIT/CHARGE_O3.png';
+import CHARGE_B1 from '@/assets/images/FITBIT/CHARGE_B1.png';
+import CHARGE_B2 from '@/assets/images/FITBIT/CHARGE_B2.png';
+import CHARGE_B3 from '@/assets/images/FITBIT/CHARGE_B3.png';
+import INSPIRE_B1 from '@/assets/images/FITBIT/INSPIRE_B1.png';
+import INSPIRE_B2 from '@/assets/images/FITBIT/INSPIRE_B2.png';
+import INSPIRE_B3 from '@/assets/images/FITBIT/INSPIRE_B3.png';
+import INSPIRE_P1 from '@/assets/images/FITBIT/INSPIRE_P1.png';
+import INSPIRE_P2 from '@/assets/images/FITBIT/INSPIRE_P2.png';
+import INSPIRE_P3 from '@/assets/images/FITBIT/INSPIRE_P3.png';
+import LUXE_1 from '@/assets/images/FITBIT/LUXE_1.png';
+import LUXE_2 from '@/assets/images/FITBIT/LUXE_2.png';
 
 export const useProductStore = defineStore('productStore', {
   state: () => ({
@@ -421,49 +439,52 @@ export const useProductStore = defineStore('productStore', {
           white: [CREASE_1, CREASE_2],
         },
       },
+      // Health & Fitness
       {
         id: 23,
-        name: 'Force Field Crease Protector',
-        price: '$6',
-        color: 'white',
-        colors: ['white'],
+        name: 'Fitbit Charge 6',
+        price: '$130',
+        color: 'orange',
+        colors: ['orange', 'black'],
         sizes: ['M'],
-        description: "Keep your kicks looking clean and sharp with the Crease Preventers. Designed to fit comfortably inside the toebox of your shoes to help prevent creasing, the Crease Preventers are designed to protect the shape of your sneakers. Each Crease Preventer includes two adhesive strips on top for easy placement, and they're designed to stay in place during movement.",
+        description: "Give your routine a boost with Fitbit Charge 6*, the only fitness tracker with Google built in. Charge 6 has your essentials—like YouTube Music, Google Maps and Google Wallet**—plus the fitness tools you need to crush your goals. From staying motivated and tracking your daily progress to tuning in and taking care, running your day and your routine has never been easier.",
         sizeFit: 'Fits true to size.',
-        review: 'I bought this awhile ago and it works amazingly, I have airfoces and they keep them nice looking.',
-        reviewer: 'Long Sovichet',
+        review: "The Fitbit Charge 6 brings a physical side button and new exercise modes to the company's popular midrange line. And, thanks to Google's acquisition of Fitbit, the Charge 6 has Google Maps, Google Wallet and YouTube Music built-in. It's a brilliant tracker, but it's still annoying many of its best features are locked behind the Fitbit Premium paywall.",
+        reviewer: 'Tom Cruise',
         images: {
-          white: [CREASE_1, CREASE_2],
+          orange: [CHARGE_O1, CHARGE_O2, CHARGE_O3],
+          black: [CHARGE_B1, CHARGE_B2, CHARGE_B3],
         },
       },
       {
         id: 24,
-        name: 'Force Field Crease Protector',
-        price: '$6',
-        color: 'white',
-        colors: ['white'],
+        name: 'Fitbit Inspire 3',
+        price: '$100',
+        color: 'black',
+        colors: ['black', 'pink'],
         sizes: ['M'],
-        description: "Keep your kicks looking clean and sharp with the Crease Preventers. Designed to fit comfortably inside the toebox of your shoes to help prevent creasing, the Crease Preventers are designed to protect the shape of your sneakers. Each Crease Preventer includes two adhesive strips on top for easy placement, and they're designed to stay in place during movement.",
+        description: "Do what you love and feel your best with Inspire 3. This little health hack on your wrist helps you stay on top of your stress, fitness and sleep--all you have to do is wear it. Track Health Metrics1 like skin temperature & blood oxygen, plus get daily scores that show how ready you are to work out or how well you're managing stress. Fitbit is part of the Google family.",
         sizeFit: 'Fits true to size.',
-        review: 'I bought this awhile ago and it works amazingly, I have airfoces and they keep them nice looking.',
-        reviewer: 'Long Sovichet',
+        review: 'If you’re looking for an affordable fitness tracker to keep track of everything from your steps to your sleep, the Fitbit Inspire 3 is the best tracker for most people. With a bright, color screen, and an excellent battery life, you can’t go wrong.',
+        reviewer: 'Tom Holland',
         images: {
-          white: [CREASE_1, CREASE_2],
+          black: [INSPIRE_B1, INSPIRE_B2, INSPIRE_B3],
+          pink: [INSPIRE_P1, INSPIRE_P2, INSPIRE_P3],
         },
       },
       {
         id: 25,
-        name: 'Force Field Crease Protector',
-        price: '$6',
-        color: 'white',
-        colors: ['white'],
+        name: 'Firbit Luxe',
+        price: '$170',
+        color: 'gold',
+        colors: ['gold'],
         sizes: ['M'],
-        description: "Keep your kicks looking clean and sharp with the Crease Preventers. Designed to fit comfortably inside the toebox of your shoes to help prevent creasing, the Crease Preventers are designed to protect the shape of your sneakers. Each Crease Preventer includes two adhesive strips on top for easy placement, and they're designed to stay in place during movement.",
+        description: "The Fitbit Luxe is looking to make fitness tracking a fashion statement. While we've seen smartwatches offer lifestyle models as alternatives to their sporty counterparts, the Fitbit Luxe is the first activity band we’ve seen in a long while that’ll pass as jewelery.",
         sizeFit: 'Fits true to size.',
-        review: 'I bought this awhile ago and it works amazingly, I have airfoces and they keep them nice looking.',
-        reviewer: 'Long Sovichet',
+        review: 'The Fitbit Luxe is equal parts activity band and wrist candy, elevated by a jewelry-inspired design and color touchscreen. For the price, we wish it offered GPS, but it still gets the fitness-tracking basics right.',
+        reviewer: 'Tom Clancy',
         images: {
-          white: [CREASE_1, CREASE_2],
+          gold: [LUXE_1, LUXE_2],
         },
       },
       // Add other products here...
