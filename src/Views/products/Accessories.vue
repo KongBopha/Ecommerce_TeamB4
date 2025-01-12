@@ -1,28 +1,33 @@
 <template>
   <div class="mb-5">
+    <!-- Search Input -->
     <input
-          type="text"
-          v-model="searchQuery"
-          id="default-search"
-          class="search-input block w-full p-4 ps-10 text-sm text-gray-400 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Search Mockups, Logos..."
-          required
-        />
+      type="text"
+      v-model="searchQuery"
+      id="default-search"
+      class="search-input block w-full p-4 ps-10 text-sm text-gray-400 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Search Mockups, Logos..."
+      required
+    />
+
+    <!-- Product Grid -->
     <div class="grid grid-cols-3 gap-[60px]">
       <router-link
-        v-for="items in FilterItems"
-        :key="items.id"
-        :to="items.view"
+        v-for="item in filteredItems"
+        :key="item.id"
+        :to="{ name: 'ProductView', params: { id: item.id } }"
       >
         <CardComponent
-          :discount="items.discount"
-          :image="items.image"
-          :title="items.title"
-          :price="items.price"
-          :button="items.button"
+          :discount="item.discount"
+          :image="item.image"
+          :title="item.title"
+          :price="item.price"
+          :button="item.button"
         />
       </router-link>
     </div>
+
+    <!-- Button to Load More Products -->
     <div @click="companiesVisible += step" class="absolute mt-[30px] right-[400px]">
       <ButtonComponent />
     </div>
@@ -32,6 +37,7 @@
 <script>
 import ButtonComponent from '@/components/ButtonComponent.vue';
 import CardComponent from '@/components/CardComponent.vue';
+import { useproductStore } from '@/stores/testProduct';
 
 export default {
   components: {
@@ -41,79 +47,23 @@ export default {
   name: 'Accessories',
   data() {
     return {
-      searchQuery: '',
-      items: [
-        {
-          view: "/AirForce1",
-          discount: "20%",
-          image   : "./src/assets/images/shoe_assister.png",
-          title   : "Shoe Assister",
-          price   : "115$",
-          button  : "Checkout",
-          id: 1,
-        },
-        {
-          view: "/AirJordan4",
-          discount: "15%",
-          image: "./src/assets/images/shoe_cleanser.png",
-          title: "Shoe Cleanser",
-          price: "150$",
-          button: "Checkout",
-          id: 2,
-        },
-        {
-          view: "/AirForce1",
-          discount: "30%",
-          image: "./src/assets/images/shoe_coloring.png",
-          title: "shoe coloring",
-          price: "230$",
-          button: "Checkout",
-          id: 3,
-        },
-        {
-          view: "/AirForce1",
-          discount: "15%",
-          image: "./src/assets/images/shoe_heel.png",
-          title: "Shoe heel",
-          price: "140$",
-          button: "Checkout",
-          id: 4,
-        },
-        {
-          view: "/AirForce1",
-          discount: "10%",
-          image: "./src/assets/images/shoe_lace.png",
-          title: "Shoe lace",
-          price: "300$",
-          button: "Checkout",
-          id: 5,
-        },
-        {
-          view: "/AirForce1",
-          discount: "30%",
-          image: "./src/assets/images/shoe_sewer.png",
-          title: "Shoe sewer",
-          price: "400$",
-          button: "Checkout",
-          id: 6,
-        },
-      ],
       companiesVisible: 3,
       step: 3,
     };
   },
   computed: {
-    FilterItems() {
-      const filtered = this.searchQuery
-        ? this.items.filter(
-            (items) =>
-              items.title &&
-              typeof items.title === 'string' &&
-              items.title.toLowerCase().includes(this.searchQuery.toLowerCase())
-          )
-        : this.items;
+    searchQuery: {
+      get() {
+        return useproductStore().searchQuery;
+      },
+      set(value) {
+        useproductStore().setSearchQuery(value);
+      },
+    },
 
-      return filtered.slice(0, this.companiesVisible);
+    filteredItems() {
+      const store = useproductStore();
+      return store.filteredProducts.slice(0, this.companiesVisible);
     },
   },
 };

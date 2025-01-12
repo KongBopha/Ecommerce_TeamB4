@@ -7,7 +7,6 @@
             <div class="flex-right">
                 <Welcome class="welcome-size" />
                 <UserInfo/>
-                <Authen_button/>
             </div>
         </div> 
     </div>

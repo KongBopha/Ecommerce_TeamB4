@@ -25,11 +25,11 @@ export default {
 <style scoped>
 
 .container {
-    width: 100%;
-    min-height: 100vh;  
+    width: 80%;
+    min-height: 90vh;  
     display: flex;
     justify-content: center;
-    padding-top: 120px;
+    padding-top: 100px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -50,8 +50,7 @@ export default {
     max-width: 600px;
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 }
 
 

@@ -1,26 +1,60 @@
 <template>
-    <div class="user-info">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        placeholder="Enter your email"
-        class="input-field"
-      />
-  
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        placeholder="Enter your password"
-        class="input-field"
-      />
-    </div>
-  </template>
-  
-  <script setup>
-  </script>
-  
+  <div class="user-info">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      placeholder="Enter your email"
+      class="input-field"
+      v-model="email"
+      required
+    />
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      placeholder="Enter your password"
+      class="input-field"
+      v-model="password"
+      :style="{ borderColor: isError ? 'red' : 'gray' }"
+      required
+    />
+
+    <span v-if="isError" class="error-message" style="color: red;">Invalid password or email</span>
+
+    <Authen_button @click="loginUser" />
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import { useStoreFunction } from "@/stores/useAuthStore";
+import { useRouter } from "vue-router";
+import Authen_button from './Authen_button.vue';
+
+const email = ref("");
+const password = ref("");
+const isError = ref(false);
+const errorMessage = ref("");
+const store = useStoreFunction();
+const router = useRouter();
+
+const loginUser = async () => {
+  const error = await store.loginUser(email.value, password.value);
+
+  if (error) {
+    isError.value = true;
+    errorMessage.value = error;
+  } else {
+    isError.value = false;
+    errorMessage.value = "";
+    router.push("/shoes");  
+  }
+};
+</script>
+
+
   <style scoped>
   .user-info {
     display: flex;

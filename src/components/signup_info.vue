@@ -1,7 +1,6 @@
 <template>
   <div class="userInfo">
     <form @submit.prevent="register" class="form-container">
-      <!-- First Name and Last Name -->
       <div class="name-group">
         <div>
           <label for="firstName">First Name</label>
@@ -19,25 +18,15 @@
           <input
             id="lastName"
             type="text"
-            placeholder="Last Name"
+            placeholder="Last Name" 
             v-model="lastName"
             class="input-field"
             required
           />
         </div>
       </div>
-
-      <!-- Gender -->
-      <label for="gender">Gender</label>
-      <select id="gender" class="input-field" v-model="gender" required>
-        <option disabled value="">Select Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-      </select>
-
       <!-- Contact Number -->
-      <label for="contactNumber">Contact Number</label>
+      <label for="phoneNumber">Contact Number</label>
       <input
         id="contactNumber"
         type="tel"
@@ -46,17 +35,6 @@
         class="input-field"
         required
       />
-
-      <!-- Date of Birth -->
-      <label for="dob">Date of Birth</label>
-      <input
-        id="dob"
-        type="date"
-        v-model="dob"
-        class="input-field"
-        required
-      />
-
       <!-- Gmail -->
       <label for="email">Gmail</label>
       <input
@@ -81,43 +59,49 @@
 
       <!-- Sign Up Button -->
       <button type="submit" class="signup-button">Sign Up</button>
+
+      <!-- Google Sign-In Button -->
+      <button v-if="!store.isLoggedIn" @click="signInWithGoogle" class="btn-google">
+        <img src="@/assets/images/google.png" class="img-logo" />
+        Sign in with Google
+      </button>
+
+      <!-- Log In Button -->
+      <button v-if="!store.isLoggedIn" @click="loginUser">
+        <p>Already have an account? <span>Log in here</span></p>
+      </button>
     </form>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { auth } from '@/main';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useRouter } from 'vue-router';
+import { ref } from "vue";
+import { useStoreFunction } from "@/stores/useAuthStore";
+import { useRouter } from "vue-router";
 
-const firstName = ref('');
-const lastName = ref('');
-const gender = ref('');
-const contactNumber = ref('');
-const dob = ref('');
-const email = ref('');
-const password = ref('');
+const email = ref("");
+const password = ref("");
+const firstName= ref("");
+const lastName = ref("");
+const contactNumber = ref("");
 const router = useRouter();
 
-const register = async () => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
-    console.log('User Registered:', {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      gender: gender.value,
-      contactNumber: contactNumber.value,
-      dob: dob.value,
-      email: email.value,
-    });
+// Access Pinia store
+const store = useStoreFunction();
 
-    alert('Successfully registered!', userCredential.user);
-    router.push('/');
-  } catch (error) {
-    console.error('Error:', error);
-    alert(error.message);
-  }
+const register = () => {
+  const fullName = firstName.value + " " + lastName.value;
+  store.createUser(email.value, password.value, fullName,contactNumber.value, router);
+  console.log("Full Name:", fullName);
+  router.push("/shoes");
+};
+
+const signInWithGoogle = () => {
+  store.signInGoogle();
+};
+
+const loginUser = () => {
+  router.push("/signinview");
 };
 </script>
 
@@ -133,7 +117,7 @@ const register = async () => {
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .name-group {
@@ -179,6 +163,27 @@ label {
 }
 
 .signup-button:hover {
-  background-color: #002a5a;
+  background-color: #1c5ba3;
 }
+span{
+  cursor: pointer;
+  color: blue;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.img-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+
 </style>

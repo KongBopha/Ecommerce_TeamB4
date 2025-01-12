@@ -35,5 +35,6 @@ h3{
     font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     font-size: 30px;
+    text-align: center
 }
 </style>

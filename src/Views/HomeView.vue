@@ -1,28 +1,12 @@
 <template>
+ <div class="container">
+ 
+  </div>
+  <div class="full-width-wrapper">
+    <Promobox />
+  </div>
+
   <div class="container">
-    <h1 class="hero-title">
-      Welcome to SparkFoot—where every step sparks something extraordinary. 
-      Discover a world of footwear designed to elevate your style, ignite your confidence, 
-      and keep you moving with energy.
-    </h1>
-
-    <!-- Search Bar -->
-    <div class="search-bar-container">
-      <input
-        type="text"
-        v-model="searchQuery"
-        placeholder="Search here..."
-        class="search-bar"
-      />
-      <font-awesome-icon class="search-icon" :icon="['fas', 'magnifying-glass']" />
-    </div>
-
-    <!-- Promo Section -->
-    <div class="promo-section">
-      <Promobox />
-    </div>
-
-    <!-- Category and Content -->
     <div class="content-container">
       <CategoryComponent />
       <router-view />
@@ -41,17 +25,18 @@ const searchQuery = ref("");
 <style scoped>
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 20px;
+  
 }
-
 .hero-title {
-  font-size: 20px;
+  font-size: 1.5rem;
+  line-height: 1.4;
   font-weight: bold;
   text-align: center;
   margin-top: 50px;
+  color: #333;  
 }
+
 
 .search-bar-container {
   position: relative;
@@ -60,7 +45,7 @@ const searchQuery = ref("");
 }
 
 .search-bar {
-  width: 50%;
+  width: 100%;
   max-width: 500px;
   padding: 12px 20px;
   font-size: 16px;
@@ -77,12 +62,33 @@ const searchQuery = ref("");
   color: #000;
 }
 
-.promo-section {
-  margin-bottom: 40px;
-}
-
 .content-container {
   display: flex;
   gap: 50px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.full-width-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.full-width-wrapper > * {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .content-container {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 </style>

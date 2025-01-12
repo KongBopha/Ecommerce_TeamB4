@@ -17,6 +17,8 @@ import BankInfo from '@/components/BankInfo.vue';
 import TransferInfo from '@/components/TransferInfo.vue';
 import Button from '@/components/button.vue';
 import { fromJSON } from 'postcss';
+import Productdetails from '@/Views/Productdetails.vue';
+
 
 const routes = [
   {

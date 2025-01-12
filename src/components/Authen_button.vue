@@ -1,8 +1,8 @@
 <template>
     <div class="main-btn">
         <p> Don't have any accounts? <span @click="singupButton"> Sign up</span></p>
-        <div class="btn-at">
-            <h3>Log in</h3>
+        <div class="btn-at" >
+            <h3 @click="logInbtn">Log in</h3>
         </div>
     </div>
 </template>
@@ -11,7 +11,7 @@
 import { useRouter } from 'vue-router';
 
 const router = useRouter();  
-
+ 
 const singupButton = () => {
     router.push('/signupview');  
 }
@@ -23,7 +23,7 @@ const singupButton = () => {
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
 }
 
@@ -33,11 +33,19 @@ const singupButton = () => {
     background-color: rgb(27, 106, 255);
     border-radius: 20px;
     margin-top: 15px;
+    position: relative;
+}
+.btn-at:hover{
+    background-color: rgb(34, 69, 136);
+    
 }
 
 h3 {
+    position: absolute;
     color: white;
-    text-align: center;
+    left: 115px;
+    top: 10px;
+
 }
 
 p {
