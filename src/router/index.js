@@ -58,7 +58,7 @@ const routes = [
     component: Signupview,
   },
   {
-    path: '/shoes/:id',
+    path: '/product/:id',
     name: 'ProductView',
     component: ProductView,
     props: true,
