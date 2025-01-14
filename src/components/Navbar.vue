@@ -1,57 +1,90 @@
 <template>
   <header>
     <div class="logo">
-      <router-link to="/shoes">SparkFoot
+      <router-link to="/shoes"
+        >SparkFoot
         <img :src="shoes" alt="Logo" class="logo-img" />
       </router-link>
     </div>
     <nav>
       <router-link to="/" class="nav-link">Home</router-link>
-      <router-link :to="{ name: 'aboutus' }" class="nav-link">About us</router-link>
+      <router-link :to="{ name: 'aboutus' }" class="nav-link"
+        >About us</router-link
+      >
 
       <!-- Categories Menu with Submenu -->
       <div class="menu-item">
         <span class="nav-link">Categories</span>
         <span class="dropdown-arrow" v-if="categoriesHasSubmenu">&#9660;</span>
         <div v-if="categoriesHasSubmenu" class="submenu">
-          <div v-for="subItem in categoriesSubmenu" :key="subItem" class="submenu-item">
+          <div
+            v-for="subItem in categoriesSubmenu"
+            :key="subItem"
+            class="submenu-item"
+          >
             {{ subItem }}
           </div>
         </div>
       </div>
 
-      <router-link :to="{ name: 'contactus' }" class="nav-link">Contact us</router-link>
+      <router-link :to="{ name: 'contactus' }" class="nav-link"
+        >Contact us</router-link
+      >
 
       <!-- Search Form -->
       <div class="form-search">
         <input type="text" v-model="input" placeholder="Search here..." />
-        <font-awesome-icon class="icon-white" :icon="['fas', 'magnifying-glass']" />
+        <font-awesome-icon
+          class="icon-white"
+          :icon="['fas', 'magnifying-glass']"
+        />
       </div>
 
       <!-- Icons Section -->
       <div class="icons">
+        <RouterLink to="/checkout"
+          ><font-awesome-icon :icon="['fas', 'cart-shopping']" />
+          <div
+            v-if="data.countCartItems > 0"
+            class="absolute px-1 -top-2 right-9 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center"
+          >
+            {{ data.countCartItems }}
+          </div>
+        </RouterLink>
+        <font-awesome-icon :icon="['fas', 'user']" @click="userAuthen" />
         <!-- Cart Icon -->
         <div class="icon-wrapper">
-          <font-awesome-icon :icon="['fas', 'cart-shopping']" @click="checkAuthWithCart" />
+          <font-awesome-icon
+            :icon="['fas', 'cart-shopping']"
+            @click="checkAuthWithCart"
+          />
         </div>
 
         <!-- User Icon with Dropdown Menu -->
         <div class="icon-wrapper">
-          <font-awesome-icon :icon="['fas', 'user']" class="user-icon" @click="toggleDropdown" />
+          <font-awesome-icon
+            :icon="['fas', 'user']"
+            class="user-icon"
+            @click="toggleDropdown"
+          />
           <div v-if="isDropdownOpen" class="sec-center">
             <div class="section-dropdown">
               <p v-if="userStore.isLoggedIn && userStore.user?.displayName">
                 Welcome {{ userStore.user.displayName }} to SparkFoot!
               </p>
-              <p v-else>
-                Welcome to SparkFoot!
-              </p>
-              <a href="#" @click="profileClicked">Profile <i class="uil uil-user"></i></a>
+              <p v-else>Welcome to SparkFoot!</p>
+              <a href="#" @click="profileClicked"
+                >Profile <i class="uil uil-user"></i
+              ></a>
               <a href="#">History Order <i class="uil uil-cog"></i></a>
-              <a href="/shoes" @click="logout" v-if="userStore.isLoggedIn">Log out <i class="uil uil-signout"></i></a>
-              <a href="/signinview" v-else>Log in <i class="uil uil-signin"></i></a>
+              <a href="/shoes" @click="logout" v-if="userStore.isLoggedIn"
+                >Log out <i class="uil uil-signout"></i
+              ></a>
+              <a href="/signinview" v-else
+                >Log in <i class="uil uil-signin"></i
+              ></a>
             </div>
-            
+
             <!-- User Information Section -->
             <div v-if="showUserInfo" class="user-info-popup">
               <div class="user-info-content">
@@ -61,7 +94,9 @@
                   <li><strong>Email:</strong> {{ email }}</li>
                   <li><strong>Phone:</strong> {{ phoneNumber }}</li>
                 </ul>
-                <button @click="showUserInfo = false" class="close-btn">Close</button>
+                <button @click="showUserInfo = false" class="close-btn">
+                  Close
+                </button>
               </div>
             </div>
           </div>
@@ -72,20 +107,26 @@
 </template>
 
 <script setup>
+//import { useStoreFunction } from "@/stores/storefunctions";
+import shoes from "../assets/images/logo.png";
+import { useRouter, RouterLink } from "vue-router";
+import { useStore } from "@/stores/store";
+
+//const userStore = useStoreFunction();
+const router = useRouter();
+const data = useStore();
 import { useStoreFunction } from "@/stores/useAuthStore";
 import shoes from "../assets/images/logo.png";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import Shoes from "@/Views/products/Shoes.vue";
+//import Shoes from "@/Views/products/Shoes.vue";
 const userStore = useStoreFunction();
-const router = useRouter();
 const email = ref("");
 const name = ref("");
 const phoneNumber = ref("");
 const isDropdownOpen = ref(false);
 const showUserInfo = ref(false);
 const input = ref("");
-
 
 function toggleDropdown() {
   isDropdownOpen.value = !isDropdownOpen.value;
@@ -100,9 +141,9 @@ function checkAuthWithCart() {
   }
 }
 
-function profileClicked (){
+function profileClicked() {
   showUserInfo.value = !showUserInfo.value;
-  userStore.DisplayUserData(name,email,phoneNumber);
+  userStore.DisplayUserData(name, email, phoneNumber);
 }
 
 function logout() {
@@ -251,6 +292,7 @@ input::placeholder {
   display: inline-block;
   margin-left: 20px;
   margin-top: 5px;
+  position: relative;
 }
 
 .user-icon {
@@ -263,7 +305,7 @@ input::placeholder {
 .user-icon:hover {
   color: #aaaaaa;
 }
-p{
+p {
   color: black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 13px;
@@ -271,7 +313,6 @@ p{
   text-align: center;
   text-transform: capitalize;
 }
-
 
 .sec-center {
   position: absolute;

@@ -1,6 +1,22 @@
 <template>
- <div class="container">
- 
+  <div class="container"></div>
+  <div>
+    <Promobox />
+  </div>
+  <div class="relative flex space-x-[70px]">
+    <CategoryComponent />
+  </div>
+  <div class="grid grid-cols-3 gap-5">
+    <CardComponent
+      v-for="product in data.products"
+      :key="product.id"
+      :discount="product.discount"
+      :image="product.image"
+      :title="product.title"
+      :price="product.price"
+      :button="product.button"
+      @click="addToCart(product)"
+    />
   </div>
   <div class="full-width-wrapper">
     <Promobox />
@@ -19,6 +35,29 @@
 </template>
 
 <script setup>
+import CardComponent from "@/components/CardComponent.vue";
+import { useStore } from "@/stores/store";
+// import CategoryComponent from "@/components/CategoryComponent.vue";
+// import ButtonComponent from "@/components/ButtonComponent.vue";
+// import Promobox from "@/components/Promobox.vue";
+// import { useproductStore } from "@/stores/testProduct";
+// import { store } from "@/stores/store";
+const data = useStore();
+
+const addToCart = (product) => {
+  data.addToCart(product);
+};
+// export default {
+//   components: { CategoryComponent, CardComponent, ButtonComponent, Promobox },
+//   setup() {
+//     const productStore = useproductStore();
+
+//     return {
+//       productStore,
+//       searchQuery: "",
+//     };
+//   },
+// };
 import { ref } from "vue";
 import Promobox from "@/components/Promobox.vue";
 import CategoryComponent from "@/components/CategoryComponent.vue";
@@ -30,7 +69,6 @@ const searchQuery = ref("");
 .container {
   width: 100%;
   padding: 20px;
-  
 }
 
 .content-container {
@@ -65,9 +103,8 @@ const searchQuery = ref("");
   font-weight: bold;
   text-align: center;
   margin-top: 50px;
-  color: #333;  
+  color: #333;
 }
-
 
 .search-bar-container {
   position: relative;
