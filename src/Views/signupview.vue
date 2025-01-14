@@ -1,66 +1,62 @@
 <template>
     <div class="container">
         <div class="center-page">
-            <Welcome />
+            <Welcomecomponent />
             <p>By signing up, you agree to SparkFoot's Term & Condition</p>
-            <div class="user-input">
-                <UserInfo />
-                <UserInfo />
+            <div class="form-container">
+                <signup_info />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import Authen_button from '@/components/Authen_button.vue';
-import UserInfo from '@/components/userInfo.vue';
-import Welcome from '@/components/welcome.vue';
+import signup_info from '@/components/signup_info.vue';
+import Welcomecomponent from '@/components/welcome.vue';
 
 export default {
     components: {
-        Welcome,
-        UserInfo,
-        Authen_button
+        Welcomecomponent,
+        signup_info
     }
 };
 </script>
 
 <style scoped>
+
 .container {
-    width: 100%;
-    height: 100vh;   
+    width: 80%;
+    min-height: 90vh;  
     display: flex;
-    justify-content: center; 
-    padding-top: 70px;
-     
+    justify-content: center;
+    padding-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .center-page {
-    width: 1000px;
-    max-width: 100%;  
-    height: 60vh;  
+    width: 60%;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;   
-    padding: 10px;   
+    padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
+    min-height: 100%; 
 }
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
 
 p {
     color: rgb(133, 133, 133);
-    margin: 20px 0;   
-}
-.user-input {
-    height: 23vh;
-    width: 700px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;  
-}
-
-.user-input .userInfo {
-    width: 45%;  
+    margin: 20px 0;
+    text-align: center;
 }
 </style>

@@ -7,7 +7,6 @@
             <div class="flex-right">
                 <Welcome class="welcome-size" />
                 <UserInfo/>
-                <Authen_button/>
             </div>
         </div> 
     </div>
@@ -33,7 +32,9 @@ export default {
     height: 100vh;   
     display: flex;
     justify-content: center; 
-    padding-top: 70px;
+    padding-top: 140px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .wrapper {

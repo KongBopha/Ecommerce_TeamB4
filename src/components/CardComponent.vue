@@ -4,8 +4,8 @@ import { defineProps } from "vue";
 defineProps({
   discount: Number,
   image: String,
-  title: String,
-  price: Number,
+  title: Text,
+  price: String,
   button: String,
 });
 </script>
@@ -13,12 +13,12 @@ defineProps({
 <template>
   <section>
     <div
-      class="relative flex flex-col items-center border border-black rounded-[10px] w-56 h-[260px] p-[10px]"
+      class="relative flex flex-col items-center border border-black rounded-[10px] w-60 h-[300px] p-[10px]"
     >
       <div
         class="absolute bg-yellow-300 text-sm px-[10px] py-1 rounded-3xl font-medium top-2 right-2"
       >
-        {{ discount }}%
+        {{ discount }}
       </div>
       <img
         :src="image"
@@ -27,7 +27,7 @@ defineProps({
       <p>{{ title }}</p>
       <br />
       <div class="flex flex-row items-center gap-x-14">
-        <p class="text-gray-400">${{ price }}</p>
+        <p class="text-gray-400">{{ price }}</p>
         <button
           class="flex flex-row items-center border-2 border-solid border-black py-1 px-2 rounded"
         >

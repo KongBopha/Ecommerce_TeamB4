@@ -14,10 +14,7 @@
 .welcome-text {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;  
     max-width: 400px;
-    margin: 0 auto;
     font-family: Arial, sans-serif;
 }
 
@@ -38,5 +35,6 @@ h3{
     font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     font-size: 30px;
+    text-align: center
 }
 </style>
