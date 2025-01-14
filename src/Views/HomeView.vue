@@ -1,68 +1,114 @@
 <template>
-  <div class="container"></div>
-  <div>
-    <Promobox />
-  </div>
-  <div class="relative flex space-x-[70px]">
-    <CategoryComponent />
-  </div>
-  <div class="grid grid-cols-3 gap-5">
-    <CardComponent
-      v-for="product in data.products"
-      :key="product.id"
-      :discount="product.discount"
-      :image="product.image"
-      :title="product.title"
-      :price="product.price"
-      :button="product.button"
-      @click="addToCart(product)"
-    />
-  </div>
-  <div class="full-width-wrapper">
-    <Promobox />
-  </div>
-
   <div class="container">
+    <div class="full-width-wrapper">
+      <!-- Promo Box Section -->
+      <Promobox />
+    </div>
+
+    <!-- Search Input Section -->
+    <div class="search-bar-container sticky top-0">
+      <input
+        type="text"
+        v-model="searchQuery"
+        @input="updateSearchQuery"
+        class="search-input block w-full p-4 text-sm border rounded-lg"
+        placeholder="Search products..."
+      />
+    </div>
+
+    <!-- Content Section with Category and Products -->
     <div class="content-container">
-      <div class ="product-category sticky top-0">
-      <CategoryComponent />
+      <!-- Category Component (Sticky on the left) -->
+      <div class="product-category sticky top-0">
+        <CategoryComponent />
       </div>
-      <div class="product-grid">
-      <router-view />
+
+      <!-- Product Grid Section -->
+      <div class="product-grid flex-1">
+        <div class="grid gap-20 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4">
+          <router-link
+            v-for="product in filteredItems"
+            :key="product.id"
+            :to="{ name: 'ProductView', params: { id: product.id } }"
+          >
+            <CardComponent
+              :discount="product.discount" 
+              :image="product.image"
+              :title="product.title"
+              :price="product.price"
+              :button="product.button"
+              @add-to-cart="addToCart(product)"
+            />
+          </router-link>
+        </div>
+
+        <!-- Button to Load More Products -->
+        <div 
+          v-if="hasMoreItems"
+          @click="loadMore" 
+          class="relative w-full flex justify-center mt-[30px] mb-[30px]"
+        >
+          <div class="absolute left-[630px]">
+            <ButtonComponent />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import CardComponent from "@/components/CardComponent.vue";
-import { useStore } from "@/stores/store";
-// import CategoryComponent from "@/components/CategoryComponent.vue";
-// import ButtonComponent from "@/components/ButtonComponent.vue";
-// import Promobox from "@/components/Promobox.vue";
-// import { useproductStore } from "@/stores/testProduct";
-// import { store } from "@/stores/store";
-const data = useStore();
-
-const addToCart = (product) => {
-  data.addToCart(product);
-};
-// export default {
-//   components: { CategoryComponent, CardComponent, ButtonComponent, Promobox },
-//   setup() {
-//     const productStore = useproductStore();
-
-//     return {
-//       productStore,
-//       searchQuery: "",
-//     };
-//   },
-// };
-import { ref } from "vue";
+import { ref, computed, watchEffect, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
+import { useStore } from '@/stores/store';  
+import { useproductStore } from '@/stores/testProduct';
 import Promobox from "@/components/Promobox.vue";
+import CardComponent from "@/components/CardComponent.vue";
 import CategoryComponent from "@/components/CategoryComponent.vue";
+import ButtonComponent from "@/components/ButtonComponent.vue";
 
-const searchQuery = ref("");
+const route = useRoute();
+const products = useStore();  
+const productsStore = useproductStore();
+const searchQuery = ref('');
+const companiesVisible = ref(8);
+const step = 4;
+
+// Watch for category changes in route and update the store category
+watchEffect(() => {
+  const category = route.path.split('/').pop();
+  console.log('Selected category:', category);
+  products.setCategory(category);
+});
+
+// Update search query in the store
+const updateSearchQuery = () => {
+  products.setSearchQuery(searchQuery.value);  // Corrected method name here
+};
+
+// Filter products based on search query and visibility
+const filteredItems = computed(() => {
+  const filteredBySearch = products.filteredProducts.filter(product => 
+    product.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+  return filteredBySearch.slice(0, companiesVisible.value);
+});
+
+// Check if there are more items to load
+const hasMoreItems = computed(() => 
+  companiesVisible.value < products.filteredProducts.length
+);
+
+// Load more products when the button is clicked
+const loadMore = () => {
+  companiesVisible.value += step;
+};
+
+// Add product to the cart
+const addToCart = async (product) => {
+  products.addToCart(product);
+  await nextTick();
+};
 </script>
 
 <style scoped>
@@ -74,13 +120,13 @@ const searchQuery = ref("");
 .content-container {
   display: flex;
   align-items: flex-start;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .product-category {
-  width: 200px; /* adjust the width as needed */
-  margin-top: 20px;
-  margin-right: 60px; /* add a margin to create space between the category and products */
+  width: 250px;   
+  margin-right: 200px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -92,71 +138,26 @@ const searchQuery = ref("");
   padding-top: 20px;
 }
 
+.search-bar-container {
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+
 .sticky {
   position: sticky;
   top: 0;
   z-index: 1;
 }
-/* .hero-title {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 50px;
-  color: #333;
-}
-
-.search-bar-container {
-  position: relative;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.search-bar {
-  width: 100%;
-  max-width: 500px;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: 2px solid #222222;
-  border-radius: 25px;
-  outline: none;
-}
-
-.search-icon {
-  position: absolute;
-  right: 25%;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #000;
-}
-
-.content-container {
-  display: flex;
-  gap: 50px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-.full-width-wrapper {
-  margin: 0;
-  padding: 0;
-}
-
-.full-width-wrapper > * {
-  width: 100%;
-}
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 14px;
-  }
-
-  .container {
-    padding: 10px;
-  }
-
   .content-container {
     flex-direction: column;
     gap: 20px;
   }
-} */
+}
 </style>

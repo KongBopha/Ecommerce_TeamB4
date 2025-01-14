@@ -14,7 +14,6 @@
       <router-link
         v-for="product in filteredItems"
         :key="product.id"
-        :to="{ name: 'ProductView', params: { id: product.id } }"
       >
         <CardComponent
           :discount="product.discount"
@@ -22,6 +21,7 @@
           :title="product.title"
           :price="product.price"
           :button="product.button"
+           @add-to-cart="addToCart"
         />
       </router-link>
     </div>
@@ -39,8 +39,9 @@
 </template>
 
 <script>
-import { ref, computed, watchEffect } from 'vue';
+import { ref, computed, watchEffect, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
+import { useStore } from '@/stores/store';  
 import { useproductStore } from '@/stores/testProduct';
 import CardComponent from '@/components/CardComponent.vue';
 import ButtonComponent from '@/components/ButtonComponent.vue';
@@ -53,34 +54,36 @@ export default {
   },
   setup() {
     const route = useRoute();
-    const productStore = useproductStore();
+    const products = useStore();  
+    const productsStore = useproductStore();
     const searchQuery = ref('');
     const companiesVisible = ref(8);
     const step = 4;
 
-    // Update the store when the route changes
     watchEffect(() => {
       const category = route.path.split('/').pop();
-      productStore.setCategory(category);
+      products.setCategory(category);
     });
 
     const updateSearchQuery = () => {
-      productStore.setSearchQuery(searchQuery.value);
+      products.searchQuery(searchQuery.value);
     };
 
-    // Get filtered items with pagination
     const filteredItems = computed(() => 
-      productStore.filteredProducts.slice(0, companiesVisible.value)
+    products.filteredProducts.slice(0, companiesVisible.value)
     );
 
-    // Check if there are more items to load
     const hasMoreItems = computed(() => 
-      companiesVisible.value < productStore.filteredProducts.length
+      companiesVisible.value < products.filteredProducts.length
     );
 
-    // Load more items function
     const loadMore = () => {
       companiesVisible.value += step;
+    };
+
+    const addToCart = async (product) => {
+      products.addToCart(product);
+      await nextTick();
     };
 
     return {
@@ -88,10 +91,12 @@ export default {
       filteredItems,
       updateSearchQuery,
       hasMoreItems,
-      loadMore
+      loadMore,
+      addToCart,
     };
-  }
+  },
 };
+
 </script>
 
 <style scoped>

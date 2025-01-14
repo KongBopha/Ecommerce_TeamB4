@@ -51,6 +51,9 @@ export const useproductStore = defineStore('product', {
     ProductPageDetails: (state) => (productId) => {
       return state.productList.find((product) => product.id === productId);
     },
+    countCartItems(state){
+      return state.cart.length; 
+    }
   },
 
   actions: {
@@ -59,6 +62,15 @@ export const useproductStore = defineStore('product', {
     },
     setCategory(category) {
       this.currentCategory = category;
-    }
+    },
+    addToCart(item) {
+      const index = this.cart.findIndex((product) => product.id === item.id);
+      if (index !== -1) {
+        this.cart[index].quantity += 1;
+      } else {
+        this.cart.push({ ...item, quantity: 1 });
+      }
+    },
+    
   }
 });

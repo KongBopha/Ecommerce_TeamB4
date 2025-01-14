@@ -34,10 +34,21 @@ export const useStore = defineStore('store', {
       { id: 25, category: "health", title: "Fitbit Luxe", price: 170, discount: 30, image: "./src/assets/images/FITBIT/LUXE_1.png", button: "Checkout" },
     ],
     cartItems: [],
+    currentCategory: 'shoes',  
+    searchQuery: ''
   }),
   getters: {
     countCartItems: (state) => {
       return state.cartItems.length;
+    },
+    filteredProducts(state) {
+      return state.products.filter((product) => 
+        product.category === state.currentCategory &&
+        product.title.toLowerCase().includes(state.searchQuery.toLowerCase())
+      );
+    },
+    ProductPageDetails: (state) => (productId) => {
+      return state.products.find((product) => product.id === productId);
     },
   },
   actions: {
@@ -64,5 +75,12 @@ export const useStore = defineStore('store', {
     remove(itemId) {
       this.cartItems = this.cartItems.filter(product => product.id !== itemId);
     },
+    setSearchQuery(query) {
+      this.searchQuery = query;
+    },
+    setCategory(category) {
+      this.currentCategory = category;
+    },
   },
+
 });

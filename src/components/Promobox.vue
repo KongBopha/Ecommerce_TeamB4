@@ -7,7 +7,12 @@
           <!-- Referral Code Card -->
           <div class="promo-card referral-card">
             <p class="promo-card-title">REFERRAL CODE</p>
-            <p class="promo-card-text">
+            <p class="promo-card-text">.promo-container {
+              width: 100%;
+              max-width: 100%;
+              margin: 0;
+              padding: 0;
+            }
               Refer people and you both get 10% off your first purchase!!! &nbsp; <span class="promo-code">CODE: GICB</span>
             </p>
           </div>
@@ -79,13 +84,21 @@ export default {
 </script>
 
 <style scoped>
+ 
 .promo-banner {
-  background-color: #007f7f;
   padding: 15px 20px;
   text-align: center;
   color: white;
   font-family: Arial, sans-serif;
 }
+.promo-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #be7171;  
+}
+
 
 .promo-text {
   font-size: 1.2rem;
@@ -112,12 +125,10 @@ export default {
 }
 .promo-cards-wrapper {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background-color: #c7c7c7;
-  color: white;
-  position: relative;
-  margin-top: 10px;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
 }
 
 .promo-cards-slider-wrapper {
@@ -129,15 +140,16 @@ export default {
 .promo-cards-slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 200%;
+  width: 100%;
 }
 
 .promo-card {
   flex: 0 0 100%;
-  text-align: center;
   padding: 20px;
+  text-align: center;
   background-color: #2780f5;
-  border-radius: 5px;
+  color: white;
+  border-radius: 0;
 }
 
 .promo-card-title {

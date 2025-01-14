@@ -42,7 +42,7 @@
 
       <!-- Icons Section -->
       <div class="icons">
-        <RouterLink to="/checkout"
+        <router-link to="/checkout"
           ><font-awesome-icon :icon="['fas', 'cart-shopping']" />
           <div
             v-if="data.countCartItems > 0"
@@ -50,16 +50,8 @@
           >
             {{ data.countCartItems }}
           </div>
-        </RouterLink>
-        <font-awesome-icon :icon="['fas', 'user']" @click="userAuthen" />
-        <!-- Cart Icon -->
-        <div class="icon-wrapper">
-          <font-awesome-icon
-            :icon="['fas', 'cart-shopping']"
-            @click="checkAuthWithCart"
-          />
-        </div>
-
+        </router-link>
+  
         <!-- User Icon with Dropdown Menu -->
         <div class="icon-wrapper">
           <font-awesome-icon
@@ -76,7 +68,7 @@
               <a href="#" @click="profileClicked"
                 >Profile <i class="uil uil-user"></i
               ></a>
-              <a href="#">History Order <i class="uil uil-cog"></i></a>
+              <!-- <a href="#">History Order <i class="uil uil-cog"></i></a> -->
               <a href="/shoes" @click="logout" v-if="userStore.isLoggedIn"
                 >Log out <i class="uil uil-signout"></i
               ></a>
@@ -109,14 +101,14 @@
 <script setup>
 //import { useStoreFunction } from "@/stores/storefunctions";
 import shoes from "../assets/images/logo.png";
-import { useRouter, RouterLink } from "vue-router";
+ 
 import { useStore } from "@/stores/store";
 
 //const userStore = useStoreFunction();
 const router = useRouter();
 const data = useStore();
 import { useStoreFunction } from "@/stores/useAuthStore";
-import shoes from "../assets/images/logo.png";
+ 
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 //import Shoes from "@/Views/products/Shoes.vue";

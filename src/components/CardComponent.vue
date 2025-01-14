@@ -1,14 +1,27 @@
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, defineEmits } from "vue";
 
-defineProps({
+const props = defineProps({
   discount: Number,
   image: String,
-  title: Text,
+  title: String,
   price: String,
   button: String,
 });
+
+const emit = defineEmits(['add-to-cart']);
+
+const addToCart = () => {
+  const product = {
+    discount: props.discount,
+    image: props.image,
+    title: props.title,
+    price: props.price,
+  };
+  emit('add-to-cart', product);
+};
 </script>
+
 
 <template>
   <section>
@@ -28,7 +41,7 @@ defineProps({
       <br />
       <div class="flex flex-row items-center gap-x-14">
         <p class="text-gray-400">{{ price }}</p>
-        <button
+        <button  @click="addToCart"
           class="flex flex-row items-center border-2 border-solid border-black py-1 px-2 rounded"
         >
           <i class="pi pi-shopping-cart"></i>
