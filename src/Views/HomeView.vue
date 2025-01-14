@@ -8,8 +8,12 @@
 
   <div class="container">
     <div class="content-container">
+      <div class ="product-category sticky top-0">
       <CategoryComponent />
+      </div>
+      <div class="product-grid">
       <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +32,34 @@ const searchQuery = ref("");
   padding: 20px;
   
 }
-.hero-title {
+
+.content-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.product-category {
+  width: 200px; /* adjust the width as needed */
+  margin-top: 20px;
+  margin-right: 60px; /* add a margin to create space between the category and products */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.product-grid {
+  flex: 1;
+  padding-top: 20px;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+/* .hero-title {
   font-size: 1.5rem;
   line-height: 1.4;
   font-weight: bold;
@@ -90,5 +121,5 @@ const searchQuery = ref("");
     flex-direction: column;
     gap: 20px;
   }
-}
+} */
 </style>

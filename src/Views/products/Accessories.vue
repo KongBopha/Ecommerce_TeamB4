@@ -1,17 +1,16 @@
 <template>
   <div class="mb-5">
     <!-- Search Input -->
-    <input
-      type="text"
-      v-model="searchQuery"
-      id="default-search"
-      class="search-input block w-full p-4 ps-10 text-sm text-gray-400 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      placeholder="Search Mockups, Logos..."
-      required
-    />
-
-    <!-- Product Grid -->
-    <div class="grid grid-cols-3 gap-[60px]">
+    <div class="search-bar-container sticky top-0">
+      <input
+        type="text"
+        v-model="searchQuery"
+        @input="updateSearchQuery"
+        class="search-input block w-full p-4 text-sm border rounded-lg"
+        placeholder="Search Accessories..."
+      />
+    </div>
+    <div class="grid gap-20 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4" style="margin-left: calc(100% - 90% - 10px);">
       <router-link
         v-for="item in filteredItems"
         :key="item.id"
@@ -26,46 +25,63 @@
         />
       </router-link>
     </div>
-
     <!-- Button to Load More Products -->
-    <div @click="companiesVisible += step" class="absolute mt-[30px] right-[400px]">
+    <div 
+      v-if="hasMoreItems"
+      @click="loadMore" 
+      class="absolute mt-[30px] right-[875px]"
+    >
       <ButtonComponent />
     </div>
   </div>
 </template>
 
 <script>
+import { ref, computed } from 'vue';
 import ButtonComponent from '@/components/ButtonComponent.vue';
 import CardComponent from '@/components/CardComponent.vue';
 import { useproductStore } from '@/stores/testProduct';
 
 export default {
+  name: 'Accessories',
   components: {
     ButtonComponent,
     CardComponent,
   },
-  name: 'Accessories',
-  data() {
-    return {
-      companiesVisible: 3,
-      step: 3,
-    };
-  },
-  computed: {
-    searchQuery: {
-      get() {
-        return useproductStore().searchQuery;
-      },
-      set(value) {
-        useproductStore().setSearchQuery(value);
-      },
-    },
+  setup() {
+    const productStore = useproductStore();
+    const companiesVisible = ref(4);
+    const step = 2;
 
-    filteredItems() {
-      const store = useproductStore();
-      return store.filteredProducts.slice(0, this.companiesVisible);
-    },
-  },
+    const searchQuery = computed({
+      get: () => productStore.searchQuery,
+      set: (value) => productStore.setSearchQuery(value)
+    });
+
+    const updateSearchQuery = () => {
+      productStore.setSearchQuery(searchQuery.value);
+    };
+
+    const filteredItems = computed(() => 
+      productStore.filteredProducts.slice(0, companiesVisible.value)
+    );
+
+    const hasMoreItems = computed(() => 
+      companiesVisible.value < productStore.filteredProducts.length
+    );
+
+    const loadMore = () => {
+      companiesVisible.value += step;
+    };
+
+    return {
+      searchQuery,
+      filteredItems,
+      updateSearchQuery,
+      hasMoreItems,
+      loadMore
+    };
+  }
 };
 </script>
 
@@ -79,7 +95,22 @@ main {
   padding: 20px;
   text-align: start;
 }
+.search-bar-container {
+  position: sticky;
+  top: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+product-grid {
+  padding-top: 60px;
+}
 
+.search-input {
+  width: 50%;
+  margin: 0 auto;
+}
 .container {
   height: auto;
   width: auto;

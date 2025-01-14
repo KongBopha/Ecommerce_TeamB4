@@ -1,15 +1,18 @@
 <template>
   <div class="mb-5">
-    <input
-      type="text"
-      v-model="searchQuery"
-      @input="updateSearchQuery"
-      class="search-input block w-full p-4 text-sm border rounded-lg"
-      placeholder="Search Shoes..."
-    />
-    <div class="grid grid-cols-3 gap-8">
+    <!-- Search Input -->
+    <div class="search-bar-container sticky top-0">
+      <input
+        type="text"
+        v-model="searchQuery"
+        @input="updateSearchQuery"
+        class="search-input block w-full p-4 text-sm border rounded-lg"
+        placeholder="Search Shoes..."
+      />
+    </div>
+    <div class="grid gap-20 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4" style="margin-left: calc(100% - 90% - 10px);">
       <router-link
-        v-for="product in filteredProducts"
+        v-for="product in filteredItems"
         :key="product.id"
         :to="{ name: 'ProductView', params: { id: product.id } }"
       >
@@ -22,6 +25,16 @@
         />
       </router-link>
     </div>
+    <!-- Button to Load More Products -->
+    <div 
+      v-if="hasMoreItems"
+      @click="loadMore" 
+      class="relative w-full flex justify-center mt-[30px] mb-[30px]"
+    >
+      <div class="absolute left-[630px]">
+        <ButtonComponent />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,39 +43,57 @@ import { ref, computed, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useproductStore } from '@/stores/testProduct';
 import CardComponent from '@/components/CardComponent.vue';
+import ButtonComponent from '@/components/ButtonComponent.vue';
 
 export default {
   name: 'Shoes',
   components: {
     CardComponent,
+    ButtonComponent,
   },
   setup() {
     const route = useRoute();
     const productStore = useproductStore();
-    const searchQuery = ref('');  
+    const searchQuery = ref('');
+    const companiesVisible = ref(8);
+    const step = 4;
 
     // Update the store when the route changes
     watchEffect(() => {
-      const category = route.path.split('/').pop();  
-      productStore.setCategory(category);  
+      const category = route.path.split('/').pop();
+      productStore.setCategory(category);
     });
 
     const updateSearchQuery = () => {
-      productStore.setSearchQuery(searchQuery.value);  
+      productStore.setSearchQuery(searchQuery.value);
     };
 
-    // Access filtered products from the store
-    const filteredProducts = computed(() => productStore.filteredProducts);
+    // Get filtered items with pagination
+    const filteredItems = computed(() => 
+      productStore.filteredProducts.slice(0, companiesVisible.value)
+    );
+
+    // Check if there are more items to load
+    const hasMoreItems = computed(() => 
+      companiesVisible.value < productStore.filteredProducts.length
+    );
+
+    // Load more items function
+    const loadMore = () => {
+      companiesVisible.value += step;
+    };
 
     return {
-      searchQuery, 
-      filteredProducts,
+      searchQuery,
+      filteredItems,
       updateSearchQuery,
-      
+      hasMoreItems,
+      loadMore
     };
-  },
+  }
 };
 </script>
+
 <style scoped>
 main {
   width: 650px;
@@ -72,6 +103,24 @@ main {
   font-size: x-small;
   padding: 20px;
   text-align: start;
+}
+
+.search-bar-container {
+  position: sticky;
+  top: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.product-grid {
+  padding-top: 60px;
+}
+
+.search-input {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .container {

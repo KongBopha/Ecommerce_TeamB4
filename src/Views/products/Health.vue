@@ -1,17 +1,18 @@
 <template>
   <div class="mb-5">
+    <div class =" search-bar-container sticky top-0">
 
     <input
       type="text"
       v-model="searchQuery"
       id="default-search"
-      class="search-input block w-full p-4 ps-10 text-sm text-gray-400 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-100 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="search-input block w-full p-4 text-sm border rounded-lg"
       placeholder="Search Vitamins, Supplements..."
       required
     />
 
-
-    <div class="grid grid-cols-3 gap-[60px]">
+      </div>
+    <div class="grid gap-20 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4" style="margin-left: calc(100% - 90% - 10px);">
       <router-link
         v-for="item in filteredItems"
         :key="item.id"
@@ -82,6 +83,22 @@ main {
   font-size: x-small;
   padding: 20px;
   text-align: start;
+}
+.search-bar-container {
+  position: sticky;
+  top: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+product-grid {
+  padding-top: 60px;
+}
+
+.search-input {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .container {
