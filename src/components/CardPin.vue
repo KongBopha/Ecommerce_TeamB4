@@ -1,4 +1,21 @@
-<script setup></script>
+<script setup>
+import { computed } from "vue";
+import { RouterLink } from "vue-router";
+import { useStore } from "@/stores/store";
+
+const data = useStore();
+
+const totalPrice = computed(() => {
+  return data.cartItems.reduce(
+    (total, item) =>
+      total +
+      item.price * item.quantity * (1 - item.discount / 100) +
+      2.5 +
+      1.5,
+    0
+  );
+});
+</script>
 
 <template>
   <section>
@@ -30,10 +47,10 @@
           class="w-8 h-8 text-center border border-gray-400 rounded shadow-sm focus:ring focus:ring-blue-300 focus:outline-none"
         />
       </div>
-      <a
-        href=""
+      <RouterLink
+        to="/checkout/payments/complete"
         class="flex items-center justify-center text-sm font-medium bg-green-400 text-white rounded py-2"
-        >Confirm Payment</a
+        >Pay USD{{ totalPrice }}</RouterLink
       >
     </div>
   </section>

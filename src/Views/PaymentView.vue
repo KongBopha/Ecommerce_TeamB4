@@ -1,17 +1,32 @@
-<script>
+<script setup>
 import { RouterView, RouterLink, useRoute } from "vue-router";
 import { computed } from "vue";
+import OrderComponent from "@/components/OrderComponent.vue";
+import { useStore } from "@/stores/store";
 
-export default {
-  setup() {
-    const route = useRoute();
-    const currentRoute = computed(() => route.fullPath);
+const data = useStore();
 
-    return {
-      currentRoute,
-    };
-  },
-};
+const subtotalPrice = computed(() => {
+  return data.cartItems.reduce(
+    (total, item) =>
+      total + item.price * item.quantity * (1 - item.discount / 100),
+    0
+  );
+});
+
+const totalPrice = computed(() => {
+  return data.cartItems.reduce(
+    (total, item) =>
+      total +
+      item.price * item.quantity * (1 - item.discount / 100) +
+      2.5 +
+      1.5,
+    0
+  );
+});
+
+const route = useRoute();
+const currentRoute = computed(() => route.fullPath);
 </script>
 
 <template>
@@ -69,22 +84,14 @@ export default {
         <div class="w-9/12 h-5/6 p-4">
           <h2 class="font-bold text-xl">Order Summary</h2>
           <hr class="bg-gray-400 h-[2px] mt-2" />
-          <div class="flex py-3">
-            <img
-              src="@/assets/images/NAF.png"
-              class="w-16 h-16 border rounded border-gray-200"
-            />
-            <div class="flex flex-col ml-2">
-              <span class="text-base font-light">Taxmax Leather Bag</span>
-              <span class="text-gray-400 font-normal text-sm"
-                >Brown Vegan Leather</span
-              >
-            </div>
-            <div class="flex flex-col ml-auto">
-              <span class="text-base font-normal">$49.80</span>
-              <span class="text-gray-400 font-normal text-sm">Qty: 2</span>
-            </div>
-          </div>
+          <OrderComponent
+            v-for="item in data.cartItems"
+            :key="item.id"
+            :image="item.image"
+            :name="item.title"
+            :price="item.price"
+            :quantity="item.quantity"
+          />
           <hr class="bg-gray-400 h-[2px]" />
           <div class="flex items-center space-x-2 py-3">
             <input
@@ -102,11 +109,11 @@ export default {
           <div class="py-3 space-y-2">
             <div class="flex justify-between text-sm font-medium">
               <span>Subtotal</span>
-              <span>$49.80</span>
+              <span>${{ subtotalPrice }}</span>
             </div>
             <div class="flex justify-between text-sm font-medium">
-              <span>Shipping</span>
-              <span>$7.24</span>
+              <span>Delivery</span>
+              <span>$2.50</span>
             </div>
           </div>
           <hr class="bg-gray-400 h-[2px]" />
@@ -114,11 +121,11 @@ export default {
             <div class="flex flex-col">
               <span class="text-sm font-light">Total</span>
               <span class="text-gray-400 text-xs font-thin"
-                >Including $2.24 in taxes</span
+                >Including $1.50 in taxes</span
               >
             </div>
             <div>
-              <span class="font-semibold text-2xl">$59.28</span>
+              <span class="font-semibold text-2xl">${{ totalPrice }}</span>
             </div>
           </div>
         </div>

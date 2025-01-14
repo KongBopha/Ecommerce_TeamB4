@@ -38,7 +38,15 @@
         />
       </div>
       <div class="icons">
-        <font-awesome-icon :icon="['fas', 'cart-shopping']" />
+        <RouterLink to="/checkout"
+          ><font-awesome-icon :icon="['fas', 'cart-shopping']" />
+          <div
+            v-if="data.countCartItems > 0"
+            class="absolute px-1 -top-2 right-9 bg-red-500 text-white text-xs w-6 h-6 rounded-full flex items-center justify-center"
+          >
+            {{ data.countCartItems }}
+          </div>
+        </RouterLink>
         <font-awesome-icon :icon="['fas', 'user']" @click="userAuthen" />
       </div>
     </nav>
@@ -46,12 +54,14 @@
 </template>
 
 <script setup>
-import { useStoreFunction } from "@/stores/storefunctions";
+//import { useStoreFunction } from "@/stores/storefunctions";
 import shoes from "../assets/images/logo.png";
-import { useRouter } from "vue-router";
+import { useRouter, RouterLink } from "vue-router";
+import { useStore } from "@/stores/store";
 
-const userStore = useStoreFunction();
+//const userStore = useStoreFunction();
 const router = useRouter();
+const data = useStore();
 
 const userAuthen = () => {
   if (userStore.isloggIn) {
@@ -206,5 +216,6 @@ input::placeholder {
   gap: 30px;
   font-size: 20px;
   margin-top: 5px;
+  position: relative;
 }
 </style>

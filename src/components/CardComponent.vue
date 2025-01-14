@@ -1,12 +1,11 @@
 <script setup>
 import { defineProps } from "vue";
 
-
 defineProps({
-  discount: String,
+  discount: Number,
   image: String,
-  title: Text,
-  price: String,
+  title: String,
+  price: Number,
   button: String,
 });
 </script>
@@ -19,13 +18,16 @@ defineProps({
       <div
         class="absolute bg-yellow-300 text-sm px-[10px] py-1 rounded-3xl font-medium top-2 right-2"
       >
-        {{ discount }}
+        {{ discount }}%
       </div>
-      <img :src="image" class="min-w-[150px] max-w-[150px] min-h-[150px] max-h-[150px]" />
+      <img
+        :src="image"
+        class="min-w-[150px] max-w-[150px] min-h-[150px] max-h-[150px]"
+      />
       <p>{{ title }}</p>
       <br />
       <div class="flex flex-row items-center gap-x-14">
-        <p class="text-gray-400">{{ price }}</p>
+        <p class="text-gray-400">${{ price }}</p>
         <button
           class="flex flex-row items-center border-2 border-solid border-black py-1 px-2 rounded"
         >
